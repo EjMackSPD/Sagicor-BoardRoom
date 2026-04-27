@@ -764,6 +764,40 @@
       background: #020b15;
     }
 
+    .player-error {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: min(560px, calc(100% - 40px));
+      display: none;
+      padding: 22px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(3, 41, 79, 0.94);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
+      transform: translate(-50%, -50%);
+    }
+
+    .player-error.is-visible {
+      display: block;
+    }
+
+    .player-error strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .player-error span {
+      display: block;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
     .screen video {
       width: 100%;
       height: 100%;
@@ -1458,6 +1492,10 @@
     <div class="screen">
       <video id="activeVideo" controls playsinline></video>
       <button class="player-play" id="centerPlayButton" type="button" aria-label="Play video"></button>
+      <div class="player-error" id="playerError" role="alert">
+        <strong>Video could not be loaded.</strong>
+        <span id="playerErrorText">Confirm the MP4 file is in the same folder as this page and is not a Git LFS pointer file.</span>
+      </div>
     </div>
 
     <div class="player-controls">
@@ -1495,6 +1533,8 @@
     const replayButton = document.getElementById("replayButton");
     const nextButton = document.getElementById("nextButton");
     const centerPlayButton = document.getElementById("centerPlayButton");
+    const playerError = document.getElementById("playerError");
+    const playerErrorText = document.getElementById("playerErrorText");
 
     let currentIndex = 0;
     let lastFocusedCard = null;
@@ -1507,7 +1547,7 @@
     }
 
     function videoPath(file) {
-      return encodeURI(file);
+      return new URL(file, window.location.href).href;
     }
 
     function createCard(item, index) {
@@ -1524,7 +1564,7 @@
       preview.muted = true;
       preview.playsInline = true;
       preview.preload = "metadata";
-      preview.src = videoPath(item.file);
+      preview.setAttribute("src", item.file);
       preview.addEventListener("loadedmetadata", () => {
         const seekTo = Math.min(1.2, Math.max(0.15, preview.duration * 0.05));
         preview.currentTime = seekTo;
@@ -1575,20 +1615,38 @@
       currentIndex = index;
       lastFocusedCard = sourceCard || document.activeElement;
       const item = videos[currentIndex];
+      playerError.classList.remove("is-visible");
+      playerErrorText.textContent = "";
       playerTitle.textContent = item.title;
       playerNumber.textContent = `Video ${String(currentIndex + 1).padStart(2, "0")} of ${videos.length}`;
-      activeVideo.src = videoPath(item.file);
+      activeVideo.setAttribute("src", videoPath(item.file));
       activeVideo.load();
       player.classList.add("is-open");
       player.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       centerPlayButton.classList.add("is-visible");
+      const playWhenReady = () => {
+        activeVideo.play().then(() => {
+          centerPlayButton.classList.remove("is-visible");
+        }).catch(() => {
+          centerPlayButton.classList.add("is-visible");
+        });
+      };
+      if (activeVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        playWhenReady();
+      } else {
+        activeVideo.addEventListener("canplay", playWhenReady, { once: true });
+      }
+      closeButton.focus({ preventScroll: true });
+    }
+
+    function playActiveVideo() {
+      playerError.classList.remove("is-visible");
       activeVideo.play().then(() => {
         centerPlayButton.classList.remove("is-visible");
       }).catch(() => {
         centerPlayButton.classList.add("is-visible");
       });
-      closeButton.focus({ preventScroll: true });
     }
 
     function closePlayer() {
@@ -1599,6 +1657,7 @@
       player.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       centerPlayButton.classList.remove("is-visible");
+      playerError.classList.remove("is-visible");
       if (lastFocusedCard && typeof lastFocusedCard.focus === "function") {
         lastFocusedCard.focus({ preventScroll: true });
       }
@@ -1626,12 +1685,18 @@
     nextButton.addEventListener("click", () => showOffset(1));
     replayButton.addEventListener("click", () => {
       activeVideo.currentTime = 0;
-      activeVideo.play();
+      playActiveVideo();
     });
-    centerPlayButton.addEventListener("click", () => activeVideo.play());
+    centerPlayButton.addEventListener("click", playActiveVideo);
     activeVideo.addEventListener("play", () => centerPlayButton.classList.remove("is-visible"));
     activeVideo.addEventListener("pause", () => centerPlayButton.classList.add("is-visible"));
     activeVideo.addEventListener("ended", () => centerPlayButton.classList.add("is-visible"));
+    activeVideo.addEventListener("error", () => {
+      const failedFile = videos[currentIndex]?.file || "selected video";
+      centerPlayButton.classList.remove("is-visible");
+      playerErrorText.textContent = `Could not open "${failedFile}". Make sure the real MP4 file is stored beside index.html. If this folder came from a GitHub ZIP download, run git lfs pull or copy the original MP4s onto the device.`;
+      playerError.classList.add("is-visible");
+    });
 
     document.addEventListener("keydown", (event) => {
       if (!player.classList.contains("is-open")) return;
