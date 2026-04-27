@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 49" role="img" aria-labelledby="title">
+  <title id="title">Sagicor</title>
+  <text x="0" y="35" fill="#21b3e8" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="400">Sagicor.</text>
+  <path d="M137 4c17 2 34 9 47 26-18-1-34-9-47-26z" fill="#79bc5a"/>
+  <path d="M138 17c17 1 32 8 45 23-17 0-31-7-45-23z" fill="#21b3e8"/>
+  <path d="M171 6c9 12 14 25 11 39-9-12-13-25-11-39z" fill="#79bc5a"/>
+  <circle cx="187" cy="44" r="3.2" fill="#79bc5a"/>
+</svg>
