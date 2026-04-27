@@ -259,6 +259,7 @@
       min-height: 108px;
       display: grid;
       grid-template-columns: 78px minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
       gap: 12px;
       align-items: center;
       padding: 14px 16px 12px 16px;
@@ -372,13 +373,18 @@
       background: var(--green-600);
     }
 
-    .pilot-card li.arrow::before {
-      display: none;
-    }
-
-    .pilot-card li.arrow {
-      padding-left: 18px;
+    .pilot-footnote {
+      grid-column: 1 / -1;
+      align-self: end;
+      display: block;
+      margin: 2px -4px -2px;
+      padding: 5px 8px 0;
+      border-top: 1px solid rgba(29, 111, 228, 0.18);
       color: #0f5caf;
+      font-size: clamp(9px, 0.76vw, 11px);
+      line-height: 1.18;
+      font-weight: 800;
+      text-align: center;
     }
 
     .summary-band {
@@ -1278,9 +1284,9 @@
                   <p>AI knowledge assistant for agents and employees.</p>
                   <ul>
                     <li>Source-backed answers. Faster service. Better consistency.</li>
-                    <li class="arrow">Tested to Copilot-native rebuild for governed scale</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">Tested to Copilot-native rebuild for governed scale</span>
               </button>
 
               <button class="pilot-card" type="button" data-video-index="0" aria-label="Play Relationship Network">
@@ -1300,9 +1306,9 @@
                   <p>Unifies people, policies, accounts, and identifiers into one view.</p>
                   <ul>
                     <li>Reveal hidden links. Ask in plain language. Act with confidence.</li>
-                    <li class="arrow">Prototype to pilot-ready governed investigator path</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">Prototype to pilot-ready governed investigator path</span>
               </button>
             </div>
           </section>
@@ -1334,9 +1340,9 @@
                   <p>AI OCR and RPA processes policy disbursement requests.</p>
                   <ul>
                     <li>Higher throughput. Less manual work. Faster payout handling.</li>
-                    <li class="arrow">First iteration live, reducing exceptions and expanding throughput</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">First iteration live, reducing exceptions and expanding throughput</span>
               </button>
 
               <button class="pilot-card green" type="button" data-video-index="2" aria-label="Play Group Health Deposit Identification">
@@ -1354,9 +1360,9 @@
                   <p>AI recommends likely COOP matches for unprocessed deposits.</p>
                   <ul>
                     <li>Faster identification. Stronger cash flow. Better traceability.</li>
-                    <li class="arrow">PoC and prototype to validate with processors</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">PoC and prototype to validate with processors</span>
               </button>
 
               <button class="pilot-card green" type="button" data-video-index="6" aria-label="Play Pre-Authorization Automation">
@@ -1373,9 +1379,9 @@
                   <p>AI extracts and prepares pre-auth cases for faster review.</p>
                   <ul>
                     <li>Lower manual effort. Better consistency. Faster turnaround.</li>
-                    <li class="arrow">Design, pilot path, build, test, and launch</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">Design, pilot path, build, test, and launch</span>
               </button>
             </div>
           </section>
@@ -1404,9 +1410,9 @@
                   <p>AI-assisted build of guided digital application journeys.</p>
                   <ul>
                     <li>Reduce errors. Service faster. Lower cost.</li>
-                    <li class="arrow">Azure PoC built, scale through term-product launch path</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">Azure PoC built, scale through term-product launch path</span>
               </button>
 
               <button class="pilot-card" type="button" data-video-index="4" aria-label="Play ivari Intelligent eForms Platform">
@@ -1424,9 +1430,9 @@
                   <p>AI converts static forms into guided digital experiences.</p>
                   <ul>
                     <li>Flexible design. Rapid deployment. Lower cost.</li>
-                    <li class="arrow">MVP path to build 3-5 high-volume forms</li>
                   </ul>
                 </span>
+                <span class="pilot-footnote">MVP path to build 3-5 high-volume forms</span>
               </button>
             </div>
           </section>
