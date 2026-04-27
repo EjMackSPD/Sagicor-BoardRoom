@@ -211,24 +211,40 @@
     }
 
     .track-title {
-      min-height: 35px;
+      position: relative;
+      min-height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      border: 2px solid #c8ddf4;
-      border-radius: 8px;
+      gap: 10px;
+      border: 0;
+      border-radius: 6px 6px 0 0;
       color: #1d6fe4;
-      background: #ffffff;
-      font-size: 20px;
+      background: linear-gradient(180deg, rgba(233, 243, 255, 0.9), rgba(255, 255, 255, 0.25));
+      font-size: 19px;
       line-height: 1;
       font-weight: 900;
       text-align: center;
       text-transform: uppercase;
     }
 
+    .track-title::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(29, 111, 228, 0.55), transparent);
+    }
+
     .track-title.green {
       color: var(--green-600);
+    }
+
+    .track-title.green::after {
+      background: linear-gradient(90deg, transparent, rgba(53, 159, 70, 0.58), transparent);
     }
 
     .track-cards {
