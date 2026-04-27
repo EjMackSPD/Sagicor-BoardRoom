@@ -234,6 +234,7 @@
     .track-cards {
       display: grid;
       gap: 8px;
+      align-content: stretch;
     }
 
     .pilot-card {
@@ -241,10 +242,10 @@
       width: 100%;
       min-height: 108px;
       display: grid;
-      grid-template-columns: 82px minmax(0, 1fr);
-      gap: 10px;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 12px;
       align-items: center;
-      padding: 12px 12px 10px 14px;
+      padding: 14px 16px 12px 16px;
       border: 2px solid #cfe0f4;
       border-radius: 9px;
       color: inherit;
@@ -288,9 +289,10 @@
     }
 
     .pilot-icon {
-      width: 66px;
-      height: 66px;
-      margin-left: 12px;
+      width: 62px;
+      height: 62px;
+      justify-self: center;
+      margin-left: 0;
     }
 
     .pilot-card.green .pilot-icon,
@@ -300,28 +302,31 @@
 
     .pilot-copy {
       min-width: 0;
+      display: grid;
+      align-content: center;
+      gap: 5px;
     }
 
     .pilot-card h3 {
       margin: 0;
       color: #1d6fe4;
       font-size: clamp(16px, 1.45vw, 19px);
-      line-height: 1.06;
+      line-height: 1.04;
       font-weight: 900;
     }
 
     .pilot-card p {
-      margin: 4px 0 5px;
+      margin: 0;
       color: #153c78;
       font-size: clamp(11px, 0.95vw, 13px);
-      line-height: 1.18;
+      line-height: 1.16;
       font-weight: 700;
     }
 
     .pilot-card ul,
     .summary-list {
       display: grid;
-      gap: 3px;
+      gap: 4px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -333,7 +338,7 @@
       padding-left: 18px;
       color: #17417f;
       font-size: clamp(9px, 0.76vw, 11px);
-      line-height: 1.16;
+      line-height: 1.18;
       font-weight: 700;
     }
 
@@ -942,9 +947,9 @@
 
       .pilot-card {
         min-height: 92px;
-        grid-template-columns: 74px minmax(0, 1fr);
-        gap: 8px;
-        padding: 8px 10px 7px 12px;
+        grid-template-columns: 68px minmax(0, 1fr);
+        gap: 10px;
+        padding: 10px 12px 9px 12px;
       }
 
       .pilot-number {
@@ -954,9 +959,8 @@
       }
 
       .pilot-icon {
-        width: 56px;
-        height: 56px;
-        margin-left: 10px;
+        width: 54px;
+        height: 54px;
       }
 
       .pilot-card h3 {
@@ -964,8 +968,11 @@
       }
 
       .pilot-card p {
-        margin: 3px 0 4px;
         font-size: 11px;
+      }
+
+      .pilot-copy {
+        gap: 4px;
       }
 
       .pilot-card li,
@@ -1098,7 +1105,6 @@
       .pilot-icon {
         width: 52px;
         height: 52px;
-        margin-left: 8px;
       }
 
       .summary-box {
