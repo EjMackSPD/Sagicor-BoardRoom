@@ -355,14 +355,19 @@
     }
 
     .pilot-card li.arrow::before {
+      content: "→";
+      top: 1px;
+      left: 0;
       width: 12px;
-      height: 8px;
-      top: 3px;
-      border-radius: 0;
-      background: none;
-      border-right: 2px solid #2277df;
-      border-bottom: 2px solid #2277df;
-      transform: rotate(-45deg);
+      height: 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #ffffff;
+      background: #2277df;
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 900;
     }
 
     .summary-band {
