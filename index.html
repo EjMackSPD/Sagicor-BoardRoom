@@ -1538,6 +1538,7 @@
 
     let currentIndex = 0;
     let lastFocusedCard = null;
+    const hostedVideoBase = "https://media.githubusercontent.com/media/EjMackSPD/Sagicor-BoardRoom/main/";
 
     function formatDuration(seconds) {
       if (!Number.isFinite(seconds)) return "Ready";
@@ -1547,6 +1548,11 @@
     }
 
     function videoPath(file) {
+      const localHosts = ["localhost", "127.0.0.1", "::1"];
+      const isHostedSite = /^https?:$/.test(window.location.protocol) && !localHosts.includes(window.location.hostname);
+      if (isHostedSite) {
+        return hostedVideoBase + encodeURIComponent(file);
+      }
       return new URL(file, window.location.href).href;
     }
 
@@ -1564,7 +1570,7 @@
       preview.muted = true;
       preview.playsInline = true;
       preview.preload = "metadata";
-      preview.setAttribute("src", item.file);
+      preview.setAttribute("src", videoPath(item.file));
       preview.addEventListener("loadedmetadata", () => {
         const seekTo = Math.min(1.2, Math.max(0.15, preview.duration * 0.05));
         preview.currentTime = seekTo;
@@ -1694,7 +1700,7 @@
     activeVideo.addEventListener("error", () => {
       const failedFile = videos[currentIndex]?.file || "selected video";
       centerPlayButton.classList.remove("is-visible");
-      playerErrorText.textContent = `Could not open "${failedFile}". Make sure the real MP4 file is stored beside index.html. If this folder came from a GitHub ZIP download, run git lfs pull or copy the original MP4s onto the device.`;
+      playerErrorText.textContent = `Could not open "${failedFile}". For local kiosk use, make sure the real MP4 file is stored beside index.html. For Vercel, confirm the GitHub media URL is reachable and Git LFS bandwidth is available.`;
       playerError.classList.add("is-visible");
     });
 
