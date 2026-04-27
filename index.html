@@ -1525,7 +1525,7 @@
 
     let currentIndex = 0;
     let lastFocusedCard = null;
-    const hostedVideoBase = "https://media.githubusercontent.com/media/EjMackSPD/Sagicor-BoardRoom/main/";
+    const hostedVideoBase = "/videos/";
 
     function formatDuration(seconds) {
       if (!Number.isFinite(seconds)) return "Ready";
@@ -1697,6 +1697,26 @@
       if (event.key === "ArrowLeft") showOffset(-1);
       if (event.key === "ArrowRight") showOffset(1);
     });
+
+    const localHosts = ["localhost", "127.0.0.1", "::1"];
+    const shouldUseHostedCache = "serviceWorker" in navigator && /^https?:$/.test(window.location.protocol) && !localHosts.includes(window.location.hostname);
+
+    if (shouldUseHostedCache) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").then((registration) => {
+          return navigator.serviceWorker.ready.then(() => registration.active || navigator.serviceWorker.controller);
+        }).then((worker) => {
+          if (worker) {
+            worker.postMessage({
+              type: "WARM_VIDEO_CACHE",
+              files: videos.map((video) => video.file)
+            });
+          }
+        }).catch(() => {
+          // The app still streams videos normally if service worker caching is unavailable.
+        });
+      });
+    }
   </script>
 </body>
 </html>
