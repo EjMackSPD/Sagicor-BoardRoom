@@ -1703,16 +1703,7 @@
 
     if (shouldUseHostedCache) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").then((registration) => {
-          return navigator.serviceWorker.ready.then(() => registration.active || navigator.serviceWorker.controller);
-        }).then((worker) => {
-          if (worker) {
-            worker.postMessage({
-              type: "WARM_VIDEO_CACHE",
-              files: videos.map((video) => video.file)
-            });
-          }
-        }).catch(() => {
+        navigator.serviceWorker.register("/sw.js").catch(() => {
           // The app still streams videos normally if service worker caching is unavailable.
         });
       });
