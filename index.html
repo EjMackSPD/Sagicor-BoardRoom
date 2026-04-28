@@ -2228,22 +2228,24 @@
 
     function renderPlacemat(index) {
       const item = placemats[index];
+      const basePath = item.image.replace(/\.[^.]+$/, "");
+      const imageCandidates = [item.image, `${basePath}.jpg`, `${basePath}.jpeg`, `${basePath}.webp`];
+      let candidateIndex = 0;
       placematContent.className = "placemat-page image-mode";
       placematContent.innerHTML = `
         <div class="placemat-image-stage">
-          <img class="placemat-image" src="${item.image}" alt="${item.title} placemat">
-          <div class="placemat-missing" role="status">
-            <strong>Placemat image not found</strong>
-            <span>Add the screenshot at ${item.image} and refresh this page.</span>
-          </div>
+          <img class="placemat-image" src="${imageCandidates[candidateIndex]}" alt="${item.title} placemat">
         </div>
       `;
       const image = placematContent.querySelector(".placemat-image");
-      const missing = placematContent.querySelector(".placemat-missing");
       image.addEventListener("error", () => {
-        image.style.display = "none";
-        missing.classList.add("is-visible");
-      }, { once: true });
+        candidateIndex += 1;
+        if (candidateIndex < imageCandidates.length) {
+          image.src = imageCandidates[candidateIndex];
+          return;
+        }
+        renderGeneratedPlacemat(index);
+      });
     }
 
     function renderGeneratedPlacemat(index) {

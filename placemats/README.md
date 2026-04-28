@@ -9,3 +9,5 @@ Place the placemat screenshots in this folder as PNG files with these names:
 - pre-authorization.png
 
 The dashboard icon links will open these images in the placemat view.
+
+The app will also accept `.jpg`, `.jpeg`, or `.webp` with the same base names.
