@@ -568,7 +568,7 @@
       z-index: 18;
       display: none;
       overflow: auto;
-      padding: 0 12px;
+      padding: 0;
       background:
         radial-gradient(circle at 94% 5%, rgba(98, 187, 70, 0.16), transparent 22rem),
         linear-gradient(135deg, #f7fbfe 0%, #eef5fa 54%, #ffffff 100%);
@@ -579,11 +579,11 @@
     }
 
     .placemat-shell {
-      width: min(1480px, 100%);
-      min-height: 100svh;
+      width: min(calc(min(708px, calc(100svh - 36px)) * 16 / 9), calc(100vw - 24px));
+      min-height: 0;
       margin: 0 auto;
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto;
       gap: 10px;
     }
 
@@ -631,6 +631,8 @@
 
     .placemat-page.image-mode {
       min-height: 0;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       display: grid;
       grid-template-rows: minmax(0, 1fr);
       padding: 0;
@@ -650,7 +652,6 @@
     .placemat-image {
       width: 100%;
       height: 100%;
-      max-height: calc(100svh - 54px);
       display: block;
       object-fit: contain;
       background: #ffffff;
