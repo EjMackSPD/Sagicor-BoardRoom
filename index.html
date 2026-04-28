@@ -325,7 +325,7 @@
     }
 
     .pilot-icon-button {
-      margin-top: 24px;
+      margin-top: 38px;
     }
 
     .pilot-icon-button:hover,
@@ -390,6 +390,8 @@
     }
 
     .pilot-copy {
+      --title-shift: 48px;
+      --body-shift: 48px;
       min-width: 0;
       display: grid;
       align-self: start;
@@ -404,7 +406,21 @@
       font-size: clamp(16px, 1.45vw, 19px);
       line-height: 1.04;
       font-weight: 900;
-      transform: translateX(-48px);
+    }
+
+    .pilot-card.green .pilot-copy {
+      --body-shift: 0px;
+    }
+
+    .pilot-copy h3 {
+      width: calc(100% + var(--title-shift));
+      transform: translateX(calc(-1 * var(--title-shift)));
+    }
+
+    .pilot-copy p,
+    .pilot-copy ul {
+      width: calc(100% + var(--body-shift));
+      transform: translateX(calc(-1 * var(--body-shift)));
     }
 
     .pilot-card p {
@@ -1299,7 +1315,6 @@
 
       .pilot-card h3 {
         font-size: 16px;
-        transform: translateX(-42px);
       }
 
       .pilot-card p {
@@ -1307,6 +1322,8 @@
       }
 
       .pilot-copy {
+        --title-shift: 42px;
+        --body-shift: 42px;
         gap: 4px;
       }
 
@@ -1429,8 +1446,9 @@
         gap: 6px;
       }
 
-      .pilot-card h3 {
-        transform: translateX(-36px);
+      .pilot-copy {
+        --title-shift: 36px;
+        --body-shift: 36px;
       }
 
       .pilot-icon {
