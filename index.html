@@ -800,6 +800,64 @@
       box-shadow: 0 20px 54px rgba(3, 41, 79, 0.13);
     }
 
+    .placemat-page.image-mode {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr);
+      padding: 0;
+      overflow: hidden;
+      background: #f7fbff;
+    }
+
+    .placemat-image-stage {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    .placemat-image {
+      width: 100%;
+      height: 100%;
+      max-height: calc(100svh - 90px);
+      display: block;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .placemat-missing {
+      width: min(680px, calc(100% - 40px));
+      display: none;
+      padding: 24px;
+      border: 2px solid #cfe0f4;
+      border-radius: 10px;
+      color: #17417f;
+      background: #ffffff;
+      box-shadow: 0 12px 32px rgba(3, 41, 79, 0.08);
+      text-align: center;
+    }
+
+    .placemat-missing.is-visible {
+      display: block;
+    }
+
+    .placemat-missing strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #05266d;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .placemat-missing span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
     .placemat-head {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -2027,6 +2085,7 @@
     const placemats = [
       {
         slug: "relationship-network",
+        image: "placemats/relationship-network.png",
         title: "Relationship Network",
         brandPrefix: "Sagicor",
         subtitle: "Unified context. Hidden links. Faster investigation.",
@@ -2040,6 +2099,7 @@
       },
       {
         slug: "knows",
+        image: "placemats/knows.png",
         title: "K.N.O.W.S.",
         brandPrefix: "Sagicor",
         subtitle: "One knowledge source. Best answers. Faster service. Smarter decisions.",
@@ -2053,6 +2113,7 @@
       },
       {
         slug: "group-health-deposit",
+        image: "placemats/group-health-deposit.png",
         title: "Group Health Deposit Identification Assistant",
         brandPrefix: "Sagicor",
         subtitle: "Smarter decision support. Faster identification. Stronger cash flow.",
@@ -2066,6 +2127,7 @@
       },
       {
         slug: "eapps",
+        image: "placemats/eapps.png",
         title: "ivari eApps Platform",
         brandPrefix: "",
         subtitle: "Reduce Errors. Service Faster. Lower Cost.",
@@ -2079,6 +2141,7 @@
       },
       {
         slug: "eforms",
+        image: "placemats/eforms.png",
         title: "ivari Intelligent eForms Platform",
         brandPrefix: "",
         subtitle: "Flexible Design. Rapid Deployment. Lower Cost.",
@@ -2092,6 +2155,7 @@
       },
       {
         slug: "client-web-disbursement",
+        image: "placemats/client-web-disbursement.png",
         title: "Client Web Policy Disbursement Automation",
         brandPrefix: "Sagicor",
         subtitle: "Faster disbursements. Higher throughput. Less manual work.",
@@ -2105,6 +2169,7 @@
       },
       {
         slug: "pre-authorization",
+        image: "placemats/pre-authorization.png",
         title: "Pre-Authorization Automation",
         brandPrefix: "Sagicor",
         subtitle: "Faster turnaround. Better consistency. Less manual effort.",
@@ -2163,6 +2228,27 @@
 
     function renderPlacemat(index) {
       const item = placemats[index];
+      placematContent.className = "placemat-page image-mode";
+      placematContent.innerHTML = `
+        <div class="placemat-image-stage">
+          <img class="placemat-image" src="${item.image}" alt="${item.title} placemat">
+          <div class="placemat-missing" role="status">
+            <strong>Placemat image not found</strong>
+            <span>Add the screenshot at ${item.image} and refresh this page.</span>
+          </div>
+        </div>
+      `;
+      const image = placematContent.querySelector(".placemat-image");
+      const missing = placematContent.querySelector(".placemat-missing");
+      image.addEventListener("error", () => {
+        image.style.display = "none";
+        missing.classList.add("is-visible");
+      }, { once: true });
+    }
+
+    function renderGeneratedPlacemat(index) {
+      const item = placemats[index];
+      placematContent.className = "placemat-page";
       const title = item.brandPrefix ? `<span class="brand-blue">${item.brandPrefix}</span> ${item.title}` : item.title;
       const panels = item.panels.map((panel, panelIndex) => `
         <section class="placemat-panel ${panelIndex === 1 ? "feature" : ""} ${panelIndex === 3 ? "green" : ""}">
