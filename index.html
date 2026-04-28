@@ -1735,7 +1735,7 @@
 
     if (shouldUseHostedCache) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").catch(() => {
+        navigator.serviceWorker.register("/sw.js?v=4").catch(() => {
           // The app still streams videos normally if service worker caching is unavailable.
         });
       });
