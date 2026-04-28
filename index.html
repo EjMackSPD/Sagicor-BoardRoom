@@ -329,8 +329,8 @@
 
     .pilot-video-button {
       position: absolute;
-      top: 9px;
-      right: 11px;
+      top: 6px;
+      right: 7px;
       z-index: 1;
       width: 34px;
       height: 28px;
@@ -374,6 +374,14 @@
       color: var(--green-600);
     }
 
+    .pilot-card:not(.green) .pilot-icon {
+      position: absolute;
+      left: 50%;
+      bottom: 46px;
+      margin-top: 0;
+      transform: translateX(-50%);
+    }
+
     .pilot-copy {
       --title-shift: 48px;
       --body-shift: 48px;
@@ -383,6 +391,10 @@
       align-content: start;
       gap: 5px;
       padding-right: 36px;
+    }
+
+    .pilot-card:not(.green) .pilot-copy {
+      transform: translateY(-5px);
     }
 
     .pilot-card h3 {
