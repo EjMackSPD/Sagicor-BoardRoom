@@ -1,4 +1,4 @@
-const APP_CACHE = "sagicor-app-v2";
+const APP_CACHE = "sagicor-app-v3";
 const APP_SHELL = [
   "/",
   "/index.html",
