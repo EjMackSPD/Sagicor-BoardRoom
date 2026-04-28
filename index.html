@@ -274,7 +274,8 @@
     }
 
     .pilot-card:hover,
-    .pilot-card:focus-visible {
+    .pilot-card:focus-visible,
+    .pilot-card:focus-within {
       transform: translateY(-2px);
       border-color: rgba(98, 187, 70, 0.8);
       box-shadow: 0 15px 28px rgba(3, 41, 79, 0.12);
@@ -311,6 +312,29 @@
       align-self: center;
       justify-self: center;
       margin-left: 0;
+    }
+
+    .pilot-icon-button {
+      text-decoration: none;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      transition: background 140ms ease, transform 140ms ease;
+    }
+
+    .pilot-icon-button:hover,
+    .pilot-icon-button:focus-visible {
+      background: rgba(29, 111, 228, 0.08);
+      outline: 2px solid rgba(29, 111, 228, 0.32);
+      outline-offset: 4px;
+      transform: scale(1.04);
+    }
+
+    .pilot-card.green .pilot-icon-button:hover,
+    .pilot-card.green .pilot-icon-button:focus-visible {
+      background: rgba(67, 160, 71, 0.1);
+      outline-color: rgba(67, 160, 71, 0.35);
     }
 
     .pilot-card.green .pilot-icon,
@@ -664,6 +688,377 @@
       grid-template-rows: auto 1fr auto;
       color: #ffffff;
       background: #020b15;
+    }
+
+    .placemat-view {
+      position: fixed;
+      inset: 0;
+      z-index: 18;
+      display: none;
+      overflow: auto;
+      padding: 12px;
+      background:
+        radial-gradient(circle at 94% 5%, rgba(98, 187, 70, 0.16), transparent 22rem),
+        linear-gradient(135deg, #f7fbfe 0%, #eef5fa 54%, #ffffff 100%);
+    }
+
+    .placemat-view.is-open {
+      display: block;
+    }
+
+    .placemat-shell {
+      width: min(1480px, 100%);
+      min-height: calc(100svh - 24px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+    }
+
+    .placemat-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .placemat-action {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid rgba(29, 111, 228, 0.24);
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: #0f4f99;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 10px 26px rgba(3, 41, 79, 0.08);
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .placemat-action.primary {
+      border-color: rgba(67, 160, 71, 0.36);
+      color: #ffffff;
+      background: linear-gradient(135deg, #1d6fe4, #43a047);
+    }
+
+    .placemat-page {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto;
+      gap: 10px;
+      padding: 20px 24px 16px;
+      border: 1px solid #c8ddf4;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 20px 54px rgba(3, 41, 79, 0.13);
+    }
+
+    .placemat-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .placemat-head h2 {
+      margin: 0;
+      color: #05266d;
+      font-size: clamp(30px, 3.2vw, 46px);
+      line-height: 0.98;
+      font-weight: 800;
+    }
+
+    .placemat-head h2 .brand-blue {
+      color: #16a4dd;
+    }
+
+    .placemat-subtitle {
+      margin: 6px 0 8px;
+      color: var(--green-600);
+      font-size: clamp(18px, 1.72vw, 27px);
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    .placemat-intro {
+      max-width: 920px;
+      margin: 0;
+      color: #17417f;
+      font-size: clamp(13px, 1.05vw, 17px);
+      line-height: 1.32;
+      font-weight: 600;
+    }
+
+    .placemat-logo {
+      display: grid;
+      justify-items: center;
+      gap: 2px;
+      min-width: 170px;
+    }
+
+    .placemat-logo img {
+      width: 148px;
+      height: auto;
+    }
+
+    .placemat-logo span {
+      color: #5d6572;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .placemat-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .placemat-metric {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      border-right: 2px solid #cfe0f4;
+    }
+
+    .placemat-metric:last-child {
+      border-right: 0;
+    }
+
+    .placemat-metric-icon,
+    .placemat-flow-icon {
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #1d6fe4;
+      background: rgba(29, 111, 228, 0.08);
+      font-weight: 900;
+    }
+
+    .placemat-metric:nth-child(even) .placemat-metric-icon,
+    .placemat-flow-icon.green {
+      color: var(--green-600);
+      background: rgba(98, 187, 70, 0.12);
+    }
+
+    .placemat-metric-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 21px;
+    }
+
+    .placemat-metric h3,
+    .placemat-panel h3 {
+      margin: 0;
+      color: #1d6fe4;
+      font-size: clamp(14px, 1.18vw, 18px);
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .placemat-metric p {
+      margin: 4px 0 0;
+      color: #17417f;
+      font-size: clamp(11px, 0.9vw, 14px);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .placemat-panels {
+      display: grid;
+      grid-template-columns: 0.95fr 1.32fr 1.08fr 0.95fr;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .placemat-panel {
+      min-height: 236px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      padding: 12px;
+      border: 2px solid #cfe0f4;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .placemat-panel.feature {
+      background: linear-gradient(180deg, #ffffff, #f7fbff);
+    }
+
+    .placemat-panel.green h3 {
+      color: var(--green-600);
+    }
+
+    .placemat-panel p {
+      margin: 0;
+      color: #17417f;
+      font-size: clamp(11px, 0.92vw, 14px);
+      line-height: 1.22;
+      font-weight: 700;
+    }
+
+    .placemat-list {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .placemat-list li {
+      position: relative;
+      min-height: 22px;
+      padding-left: 26px;
+      color: #183f80;
+      font-size: clamp(11px, 0.9vw, 14px);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .placemat-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 2px solid rgba(29, 111, 228, 0.38);
+      background: rgba(29, 111, 228, 0.06);
+    }
+
+    .placemat-panel.green .placemat-list li::before {
+      border-color: rgba(67, 160, 71, 0.42);
+      background: rgba(98, 187, 70, 0.12);
+    }
+
+    .placemat-engine {
+      display: grid;
+      grid-template-columns: 1fr 150px 1fr;
+      gap: 10px;
+      align-items: center;
+      min-height: 138px;
+      padding: 8px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f1f8ff, #f4fbf1);
+    }
+
+    .placemat-ai {
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #ffffff;
+      background: radial-gradient(circle at 72% 24%, #62bb46, #1375cf 58%, #073763);
+      box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.45);
+      text-align: center;
+      font-size: 22px;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .placemat-ai span {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .placemat-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr 1fr;
+      gap: 10px;
+    }
+
+    .placemat-box {
+      min-height: 94px;
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      align-content: start;
+      padding: 10px 14px;
+      border: 2px solid #cfe0f4;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .placemat-box.green {
+      border-color: rgba(98, 187, 70, 0.45);
+    }
+
+    .placemat-box.example {
+      grid-template-columns: 1fr;
+    }
+
+    .placemat-box.example h3 {
+      text-align: center;
+    }
+
+    .placemat-box h3 {
+      margin: 0 0 6px;
+      color: #1d6fe4;
+      font-size: 17px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .placemat-box.green h3 {
+      color: var(--green-600);
+    }
+
+    .placemat-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      color: #17417f;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .placemat-flow > span:not(.placemat-flow-arrow) {
+      min-width: 0;
+    }
+
+    .placemat-flow-icon {
+      width: 58px;
+      height: 58px;
+      font-size: 20px;
+    }
+
+    .placemat-flow-arrow {
+      color: #1d6fe4;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .placemat-footer {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 2.6vw, 34px);
+      padding: 8px 16px;
+      border: 2px solid #cfe0f4;
+      border-radius: 9px;
+      color: #06276a;
+      background: linear-gradient(180deg, #f7fbff, #ffffff);
+      font-size: clamp(13px, 1.1vw, 18px);
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
     }
 
     .player.is-open {
@@ -1271,14 +1666,14 @@
               Assist / Knowledge
             </h2>
             <div class="track-cards">
-              <button class="pilot-card" type="button" data-video-index="1" aria-label="Play Sagicor KNOWS">
+              <article class="pilot-card" data-video-index="1" tabindex="0" role="button" aria-label="Play Sagicor KNOWS">
                 <span class="pilot-number">1</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-knows" data-placemat-index="1" aria-label="Open Sagicor KNOWS placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M32 8v48M23 13c-7 0-12 5-12 12 0 3 1 5 3 7-3 2-5 5-5 9 0 7 5 12 12 12h11M41 13c7 0 12 5 12 12 0 3-1 5-3 7 3 2 5 5 5 9 0 7-5 12-12 12H32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <path d="M21 27h8M35 27h8M21 39h8M35 39h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>Sagicor K.N.O.W.S.</h3>
                   <p>AI knowledge assistant for agents and employees.</p>
@@ -1287,11 +1682,11 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">Tested to Copilot-native rebuild for governed scale</span>
-              </button>
+              </article>
 
-              <button class="pilot-card" type="button" data-video-index="0" aria-label="Play Relationship Network">
+              <article class="pilot-card" data-video-index="0" tabindex="0" role="button" aria-label="Play Relationship Network">
                 <span class="pilot-number">2</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-relationship-network" data-placemat-index="0" aria-label="Open Relationship Network placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <circle cx="32" cy="32" r="6" stroke="currentColor" stroke-width="4"/>
                     <circle cx="12" cy="20" r="4" stroke="currentColor" stroke-width="4"/>
@@ -1300,7 +1695,7 @@
                     <circle cx="52" cy="46" r="4" stroke="currentColor" stroke-width="4"/>
                     <path d="M17 23 27 29M47 23 37 29M17 43l10-7M47 43l-10-7" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>Relationship Network</h3>
                   <p>Unifies people, policies, accounts, and identifiers into one view.</p>
@@ -1309,7 +1704,7 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">Prototype to pilot-ready governed investigator path</span>
-              </button>
+              </article>
             </div>
           </section>
 
@@ -1326,15 +1721,15 @@
               Process Automation
             </h2>
             <div class="track-cards">
-              <button class="pilot-card green" type="button" data-video-index="5" aria-label="Play Client Web Disbursement Automation">
+              <article class="pilot-card green" data-video-index="5" tabindex="0" role="button" aria-label="Play Client Web Disbursement Automation">
                 <span class="pilot-number">3</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-client-web-disbursement" data-placemat-index="5" aria-label="Open Client Web Disbursement Automation placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M12 46a24 24 0 1 1 40 0" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <path d="M32 32 45 19" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <path d="M20 46h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>Client Web Disbursement Automation</h3>
                   <p>AI OCR and RPA processes policy disbursement requests.</p>
@@ -1343,18 +1738,18 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">First iteration live, reducing exceptions and expanding throughput</span>
-              </button>
+              </article>
 
-              <button class="pilot-card green" type="button" data-video-index="2" aria-label="Play Group Health Deposit Identification">
+              <article class="pilot-card green" data-video-index="2" tabindex="0" role="button" aria-label="Play Group Health Deposit Identification">
                 <span class="pilot-number">4</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-group-health-deposit" data-placemat-index="2" aria-label="Open Group Health Deposit Identification placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M15 37V27a17 17 0 0 1 34 0v10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <rect x="8" y="33" width="12" height="17" rx="4" stroke="currentColor" stroke-width="4"/>
                     <rect x="44" y="33" width="12" height="17" rx="4" stroke="currentColor" stroke-width="4"/>
                     <path d="M45 49c-2 5-7 7-13 7" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>Group Health Deposit Identification</h3>
                   <p>AI recommends likely COOP matches for unprocessed deposits.</p>
@@ -1363,17 +1758,17 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">PoC and prototype to validate with processors</span>
-              </button>
+              </article>
 
-              <button class="pilot-card green" type="button" data-video-index="6" aria-label="Play Pre-Authorization Automation">
+              <article class="pilot-card green" data-video-index="6" tabindex="0" role="button" aria-label="Play Pre-Authorization Automation">
                 <span class="pilot-number">5</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-pre-authorization" data-placemat-index="6" aria-label="Open Pre-Authorization Automation placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M20 13h24l6 7v35H14V20z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                     <path d="M24 30h16M24 40h16M24 50h10M22 21h20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <path d="m18 30 3 3 6-7M18 40l3 3 6-7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>Pre-Authorization Automation</h3>
                   <p>AI extracts and prepares pre-auth cases for faster review.</p>
@@ -1382,7 +1777,7 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">Design, pilot path, build, test, and launch</span>
-              </button>
+              </article>
             </div>
           </section>
 
@@ -1397,14 +1792,14 @@
               Platform Acceleration
             </h2>
             <div class="track-cards">
-              <button class="pilot-card" type="button" data-video-index="3" aria-label="Play ivari eApps Platform">
+              <article class="pilot-card" data-video-index="3" tabindex="0" role="button" aria-label="Play ivari eApps Platform">
                 <span class="pilot-number">6</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-eapps" data-placemat-index="3" aria-label="Open ivari eApps Platform placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M12 14h40v34H12zM8 54h48" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                     <path d="m23 27 4 4 8-10M23 39l4 4 8-10M40 27h6M40 39h6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>ivari eApps Platform</h3>
                   <p>AI-assisted build of guided digital application journeys.</p>
@@ -1413,18 +1808,18 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">Azure PoC built, scale through term-product launch path</span>
-              </button>
+              </article>
 
-              <button class="pilot-card" type="button" data-video-index="4" aria-label="Play ivari Intelligent eForms Platform">
+              <article class="pilot-card" data-video-index="4" tabindex="0" role="button" aria-label="Play ivari Intelligent eForms Platform">
                 <span class="pilot-number">7</span>
-                <span class="pilot-icon" aria-hidden="true">
+                <a class="pilot-icon pilot-icon-button" href="#placemat-eforms" data-placemat-index="4" aria-label="Open ivari Intelligent eForms Platform placemat">
                   <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                     <path d="M20 8h22l10 10v38H20z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                     <path d="M42 8v12h10M28 29h16M28 39h16M28 49h8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <circle cx="48" cy="48" r="10" fill="#1d6fe4"/>
                     <path d="M48 53V43M43 48l5-5 5 5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                </span>
+                </a>
                 <span class="pilot-copy">
                   <h3>ivari Intelligent eForms Platform</h3>
                   <p>AI converts static forms into guided digital experiences.</p>
@@ -1433,7 +1828,7 @@
                   </ul>
                 </span>
                 <span class="pilot-footnote">MVP path to build 3-5 high-volume forms</span>
-              </button>
+              </article>
             </div>
           </section>
         </div>
@@ -1494,6 +1889,16 @@
     </main>
   </div>
 
+  <section class="placemat-view" id="placematView" aria-label="Placemat detail" aria-hidden="true">
+    <div class="placemat-shell">
+      <div class="placemat-actions">
+        <button class="placemat-action" type="button" id="placematBackButton">Back to dashboard</button>
+        <button class="placemat-action primary" type="button" id="placematVideoButton">Watch video</button>
+      </div>
+      <article class="placemat-page" id="placematContent"></article>
+    </div>
+  </section>
+
   <section class="player" id="player" aria-label="Video player" aria-hidden="true">
     <div class="player-bar">
       <button class="icon-button" type="button" id="backButton" aria-label="Back to library">
@@ -1541,8 +1946,106 @@
       { file: "7 - Sagicor Pre-authorization - FINAL.mp4", title: "Pre-Authorization" }
     ];
 
+    const placemats = [
+      {
+        slug: "relationship-network",
+        title: "Relationship Network",
+        brandPrefix: "Sagicor",
+        subtitle: "Unified context. Hidden links. Faster investigation.",
+        intro: "AI helps connect people, policies, accounts, and identifiers into one view so teams can ask plain-language questions and act with confidence.",
+        metrics: [["Graph", "Connected data", "People, policies, accounts"], ["Search", "Plain language", "Ask across relationships"], ["Control", "Governed access", "Human oversight remains"], ["Speed", "Faster triage", "Reveal links sooner"]],
+        panels: [["1. Data In", "Scattered identifiers and relationship signals become searchable.", ["People and contacts", "Policies and accounts", "Beneficiaries and advisors", "Identifiers and notes"]], ["2. Relationship Engine", "The assistant organizes connected entities and highlights likely relationships.", ["Indexes entity data", "Finds shared identifiers", "Connects related accounts", "Explains why links matter"]], ["3. Ask In Plain Language", "Investigators can search across the relationship network without building reports.", ["Show related accounts", "Find shared contacts", "Explain connection paths", "Surface next-best questions"]], ["4. Governed Insight", "Teams keep investigation control while getting faster evidence.", ["Human review remains", "Source-backed context", "Reusable investigation pattern", "Pilot-ready expansion path"]]],
+        outcomes: ["Reveal hidden links", "Reduce manual research", "Improve investigation consistency", "Create a reusable graph pattern"],
+        flow: ["Question asked", "Network searched", "Related signals returned", "Investigator acts"],
+        path: ["Prototype built", "Pilot-ready path", "Governed investigator use", "Reusable data foundation"],
+        footer: ["Human in the loop", "Connected context", "Plain-language search", "Better decisions"]
+      },
+      {
+        slug: "knows",
+        title: "K.N.O.W.S.",
+        brandPrefix: "Sagicor",
+        subtitle: "One knowledge source. Best answers. Faster service. Smarter decisions.",
+        intro: "An AI-powered knowledge assistant helps agents and employees ask questions in plain language and get consistent, source-backed answers on products and services.",
+        metrics: [["Natural", "Natural", "Ask in plain language"], ["Trusted", "Trusted", "Source-backed and accurate"], ["Fast", "Fast", "Answers in seconds"], ["Consistent", "Consistent", "One source of truth"]],
+        panels: [["1. Knowledge In", "Scattered product and service knowledge is brought into one searchable source of truth.", ["Product guides", "Service manuals", "FAQs", "Training content", "Policy documents"]], ["2. K.N.O.W.S. AI Engine", "Understands, organizes, and delivers the right answers.", ["Ingests and organizes content", "Indexes and understands information", "Connects topics and relationships", "Provides source-backed responses"]], ["3. Ask In Plain Language", "Employees and agents ask questions the way they think.", ["Sales agent question", "Assistant response", "Sources referenced", "Consistent answer generated"]], ["4. Better Service", "Knowledge at fingertips drives better outcomes for everyone.", ["Agents get answers quickly", "Less time searching files", "Faster onboarding", "Better customer experience"]]],
+        outcomes: ["Reduces search time", "Improves answer consistency", "Supports faster service", "Preserves institutional knowledge"],
+        flow: ["Employee asks question", "K.N.O.W.S. searches content", "Best answer returned", "Agent responds confidently"],
+        path: ["Product and service knowledge", "Employees and agents", "Consistent source of truth", "Governed expansion path"],
+        footer: ["Human-like conversation", "Source-backed answers", "One place to search", "Faster service"]
+      },
+      {
+        slug: "group-health-deposit",
+        title: "Group Health Deposit Identification Assistant",
+        brandPrefix: "Sagicor",
+        subtitle: "Smarter decision support. Faster identification. Stronger cash flow.",
+        intro: "Using AI to recommend the most likely COOP match for unprocessed bank deposits so processors confirm faster and move payments through existing controls.",
+        metrics: [["Speed", "Speed", "Faster identification"], ["Efficiency", "Efficiency", "Less manual work"], ["Accuracy", "Accuracy", "AI recommendations with reason codes"], ["Control", "Control", "Human confirmation stays in place"]],
+        panels: [["1. Data In", "Data you have, deposits and information.", ["Bank deposits", "Deposit extracts", "Historical COOP payments", "Master list", "Reference data"]], ["2. AI Assistant Engine", "Find patterns. Recommend the most likely match. Explain why.", ["Reads transaction descriptions", "Finds recurring patterns", "Compares historical matches", "Ranks likely COOPs", "Provides confidence"]], ["3. Processor Decision", "Review AI recommendation and confirm.", ["Top match shown", "Reason codes included", "Confirm match", "Refer if not a match"]], ["4. Move Payment Forward", "Seamless into existing receipting process.", ["Update master list", "Mark for receipting", "Prepare file and report", "Email cash receipting", "Batch process"]]],
+        outcomes: ["Builds momentum", "Reduces backlog", "Improves liquidity", "Creates a reusable pattern"],
+        flow: ["Deposit arrives", "AI analyzes patterns", "Likely COOP shown", "Processor confirms"],
+        path: ["Recurring COOP deposits", "Improve identification accuracy", "Reduce manual investigation time", "Strengthen controls"],
+        footer: ["Human in the loop", "AI supports the decision", "Existing controls remain", "Better outcomes"]
+      },
+      {
+        slug: "eapps",
+        title: "ivari eApps Platform",
+        brandPrefix: "",
+        subtitle: "Reduce Errors. Service Faster. Lower Cost.",
+        intro: "AI helps convert fragmented application processes into guided digital journeys so teams can launch changes faster, reduce errors, and improve service while human review remains in place.",
+        metrics: [["Speed", "Speed", "Faster application processing"], ["Efficiency", "Efficiency", "Less manual handling"], ["Accuracy", "Accuracy", "Real-time validation"], ["Control", "Control", "Human review remains"]],
+        panels: [["1. Application Input Today", "Fragmented intake and manual handling slow delivery.", ["Paper or fillable PDFs", "Broker and advisor submissions", "Manual intake processes", "Missing data", "Back-and-forth follow-ups"]], ["2. Intelligent eApps Engine", "AI-assisted build and guided application journeys.", ["Extracts application structure", "Applies business rules", "Guides advisor input", "Validates in real time", "Routes completed applications"]], ["3. Guided Application Journey", "Before and after for cleaner submission.", ["Guided digital journey", "Real-time validation", "Complete submissions", "Faster iteration"]], ["4. Business Impact", "Better experience, more control, lower risk.", ["Better client experience", "Faster turnaround", "Lower error rates", "Scalable digital platform"]]],
+        outcomes: ["Shorter delivery cycles", "Better reuse across products", "Lower error rates", "Better digital experience"],
+        flow: ["Target journey defined", "AI generates first draft", "Team reviews", "Application flow is ready"],
+        path: ["High-volume application types", "Reduce errors and rework", "Validate end-to-end flow", "Term-products launch path"],
+        footer: ["Human in the loop", "AI accelerates delivery", "Better data", "Scalable foundation"]
+      },
+      {
+        slug: "eforms",
+        title: "ivari Intelligent eForms Platform",
+        brandPrefix: "",
+        subtitle: "Flexible Design. Rapid Deployment. Lower Cost.",
+        intro: "AI helps transform static forms into guided digital experiences so teams receive cleaner submissions, reduce rework, and modernize form delivery faster.",
+        metrics: [["Speed", "Speed", "Faster form completion"], ["Efficiency", "Efficiency", "Less correction and rework"], ["Accuracy", "Accuracy", "Real-time validation"], ["Control", "Control", "Human review remains"]],
+        panels: [["1. Form Input Today", "Many forms still begin as fillable PDFs or vendor-hosted forms.", ["Fillable PDFs", "Vendor-hosted forms", "Manual submissions", "Missing information", "Rework and follow-ups"]], ["2. Intelligent eForms Engine", "An ivari-owned platform built with Claude Code in Azure.", ["Extracts form structure", "Applies business rules", "Guides user input", "Validates in real time", "Routes completed forms"]], ["3. Guided Form Journey", "A cleaner before and after flow.", ["Guided digital flow", "Real-time validation", "Clean submissions", "Automated intake"]], ["4. Business Impact", "Cleaner submissions and more scalable form delivery.", ["Better client experience", "Faster rollout of forms", "Lower vendor dependency", "More scalable forms model"]]],
+        outcomes: ["Cleaner submissions", "Less rework", "Better service quality", "Faster modernization"],
+        flow: ["PDF form", "AI converts and guides", "User completes online", "Operations receives clean submission"],
+        path: ["3-5 high-volume forms", "Reduce rework and errors", "Validate end-to-end flow", "Proof-of-concept validation"],
+        footer: ["Human in the loop", "AI accelerates delivery", "Better data", "Better service"]
+      },
+      {
+        slug: "client-web-disbursement",
+        title: "Client Web Policy Disbursement Automation",
+        brandPrefix: "Sagicor",
+        subtitle: "Faster disbursements. Higher throughput. Less manual work.",
+        intro: "AI OCR and RPA automate client web policy disbursement requests from P360 into CAPSIL while routing exceptions for manual review and preserving control.",
+        metrics: [["Throughput", "Throughput", "30% uplift live today"], ["Accuracy", "Accuracy", "Targets faster client payout"], ["Control", "Control", "Exceptions governed"], ["Service", "Client Service", "Urgent cases move faster"]],
+        panels: [["1. Client Web Request", "Client submits a policy disbursement request with key details.", ["Policy details", "Banking details", "Request captured in P360", "Work packet created"]], ["2. AI OCR + RPA Extraction", "Bot opens the packet and extracts policy, owner, amount, and bank details.", ["Extracts key data", "Reduces re-keying", "Routes exceptions", "Updates worklist"]], ["3. Validation In CAPSIL", "Automated checks validate cashout and policy details.", ["Bank match", "Valid ID", "Paid-to-date status", "Duplicates", "Flag exceptions"]], ["4. Results & Monitoring", "First iteration is live with throughput gains.", ["30% throughput uplift", "Backlog reduced", "Audit trail retained", "Next release target"]]],
+        outcomes: ["Higher throughput", "Lower manual effort", "Better audit trail", "Faster client turnaround"],
+        flow: ["Client submits request", "Bot extracts and validates", "EFT processed or routed", "Worklist updated"],
+        path: ["First iteration live", "Exception reduction underway", "Higher straight-through processing", "Works beyond office hours"],
+        footer: ["Eligible EFT requests move faster", "Exceptions route for manual review", "Audit trail remains in place"]
+      },
+      {
+        slug: "pre-authorization",
+        title: "Pre-Authorization Automation",
+        brandPrefix: "Sagicor",
+        subtitle: "Faster turnaround. Better consistency. Less manual effort.",
+        intro: "AI helps extract, interpret, and prepare pre-authorization requests so teams can review cases faster, work within service targets, and return decisions more efficiently.",
+        metrics: [["Turnaround", "Turnaround", "Today about 21 days"], ["Target", "Target", "Move toward 5-day SLA"], ["Consistency", "Consistency", "More standardized review"], ["Control", "Control", "Human review remains"]],
+        panels: [["1. Client / Provider Request", "Pre-authorization request and supporting documents are received.", ["Forms", "Scans", "PDFs", "Treatment details", "Supporting information"]], ["2. AI Intake + Extraction", "AI extracts key details and prepares the file for assessment.", ["Patient details", "Provider details", "Treatment data", "Medical terms", "Supporting documents"]], ["3. Medical Interpretation", "AI organizes the case and prepares key points for review.", ["Summarized case", "Structured fields", "Potential issues", "Recommendation support"]], ["4. Response & Tracking", "Decision letter and status are prepared for follow-up.", ["Reviewer validates", "Decision finalized", "Response generated", "Status tracked"]]],
+        outcomes: ["Lower manual effort", "Faster case preparation", "More consistent responses", "Better provider experience"],
+        flow: ["Request received", "AI extracts and organizes", "Reviewer confirms", "Response sent"],
+        path: ["Unstructured request intake", "Faster turnaround support", "Human-in-the-loop decisions", "Better service-level performance"],
+        footer: ["AI supports the process", "Reviewers make the decision", "Better data", "Better service"]
+      }
+    ];
+
     const grid = document.getElementById("videoGrid");
     const player = document.getElementById("player");
+    const placematView = document.getElementById("placematView");
+    const placematContent = document.getElementById("placematContent");
+    const placematBackButton = document.getElementById("placematBackButton");
+    const placematVideoButton = document.getElementById("placematVideoButton");
     const activeVideo = document.getElementById("activeVideo");
     const playerTitle = document.getElementById("playerTitle");
     const playerNumber = document.getElementById("playerNumber");
@@ -1556,6 +2059,7 @@
     const playerErrorText = document.getElementById("playerErrorText");
 
     let currentIndex = 0;
+    let currentPlacematIndex = 0;
     let lastFocusedCard = null;
     const hostedVideoBase = "/videos/";
 
@@ -1573,6 +2077,109 @@
         return hostedVideoBase + encodeURIComponent(file);
       }
       return new URL(file, window.location.href).href;
+    }
+
+    function renderList(items, className = "placemat-list") {
+      return `<ul class="${className}">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+    }
+
+    function renderPlacemat(index) {
+      const item = placemats[index];
+      const title = item.brandPrefix ? `<span class="brand-blue">${item.brandPrefix}</span> ${item.title}` : item.title;
+      const panels = item.panels.map((panel, panelIndex) => `
+        <section class="placemat-panel ${panelIndex === 1 ? "feature" : ""} ${panelIndex === 3 ? "green" : ""}">
+          <h3>${panel[0]}</h3>
+          <p>${panel[1]}</p>
+          ${panelIndex === 1 ? `
+            <div class="placemat-engine">
+              ${renderList(panel[2].slice(0, Math.ceil(panel[2].length / 2)))}
+              <div class="placemat-ai">AI<span>Assistant</span></div>
+              ${renderList(panel[2].slice(Math.ceil(panel[2].length / 2)))}
+            </div>
+          ` : renderList(panel[2])}
+        </section>
+      `).join("");
+      placematContent.innerHTML = `
+        <header class="placemat-head">
+          <div>
+            <h2>${title}</h2>
+            <p class="placemat-subtitle">${item.subtitle}</p>
+            <p class="placemat-intro">${item.intro}</p>
+          </div>
+          <div class="placemat-logo">
+            <img src="sagicor-logo.svg" alt="Sagicor">
+            <span>Wise Financial Thinking for Life</span>
+          </div>
+        </header>
+        <section class="placemat-metrics" aria-label="Pilot attributes">
+          ${item.metrics.map((metric) => `
+            <div class="placemat-metric">
+              <span class="placemat-metric-icon" aria-hidden="true">${metric[0].slice(0, 1)}</span>
+              <div>
+                <h3>${metric[1]}</h3>
+                <p>${metric[2]}</p>
+              </div>
+            </div>
+          `).join("")}
+        </section>
+        <section class="placemat-panels" aria-label="Placemat flow">${panels}</section>
+        <section class="placemat-bottom" aria-label="Pilot summary">
+          <div class="placemat-box">
+            <span class="placemat-flow-icon" aria-hidden="true">R</span>
+            <div>
+              <h3>Result</h3>
+              ${renderList(item.outcomes)}
+            </div>
+          </div>
+          <div class="placemat-box example">
+            <div>
+              <h3>Example In Action</h3>
+              <div class="placemat-flow">
+                ${item.flow.map((step, stepIndex) => `
+                  ${stepIndex > 0 ? `<span class="placemat-flow-arrow" aria-hidden="true">-&gt;</span>` : ""}
+                  <span>${step}</span>
+                `).join("")}
+              </div>
+            </div>
+          </div>
+          <div class="placemat-box green">
+            <span class="placemat-flow-icon green" aria-hidden="true">P</span>
+            <div>
+              <h3>Pilot Focus</h3>
+              ${renderList(item.path)}
+            </div>
+          </div>
+        </section>
+        <footer class="placemat-footer">
+          ${item.footer.map((footerItem) => `<span>${footerItem}</span>`).join("<span aria-hidden=\"true\">&bull;</span>")}
+        </footer>
+      `;
+    }
+
+    function placematIndexFromHash() {
+      const slug = window.location.hash.replace("#placemat-", "");
+      return placemats.findIndex((item) => item.slug === slug);
+    }
+
+    function openPlacemat(index, updateHash = true) {
+      currentPlacematIndex = index;
+      renderPlacemat(index);
+      placematView.classList.add("is-open");
+      placematView.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (updateHash && placemats[index]) {
+        history.pushState(null, "", `#placemat-${placemats[index].slug}`);
+      }
+      placematBackButton.focus({ preventScroll: true });
+    }
+
+    function closePlacemat(updateHash = true) {
+      placematView.classList.remove("is-open");
+      placematView.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (updateHash && window.location.hash.startsWith("#placemat-")) {
+        history.pushState(null, "", window.location.pathname + window.location.search);
+      }
     }
 
     function createCard(item, index) {
@@ -1680,7 +2287,7 @@
       activeVideo.load();
       player.classList.remove("is-open");
       player.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+      document.body.style.overflow = placematView.classList.contains("is-open") ? "hidden" : "";
       centerPlayButton.classList.remove("is-visible");
       playerError.classList.remove("is-visible");
       if (lastFocusedCard && typeof lastFocusedCard.focus === "function") {
@@ -1696,7 +2303,17 @@
     videos.forEach((item, index) => grid.append(createCard(item, index)));
 
     document.querySelectorAll("[data-video-index]").forEach((card) => {
-      card.addEventListener("click", () => {
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".pilot-icon-button")) return;
+        const index = Number(card.dataset.videoIndex);
+        if (Number.isInteger(index) && videos[index]) {
+          openVideo(index, card);
+        }
+      });
+      card.addEventListener("keydown", (event) => {
+        if (event.target.closest(".pilot-icon-button")) return;
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
         const index = Number(card.dataset.videoIndex);
         if (Number.isInteger(index) && videos[index]) {
           openVideo(index, card);
@@ -1704,8 +2321,21 @@
       });
     });
 
+    document.querySelectorAll("[data-placemat-index]").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const index = Number(button.dataset.placematIndex);
+        if (Number.isInteger(index) && placemats[index]) {
+          openPlacemat(index);
+        }
+      });
+    });
+
     closeButton.addEventListener("click", closePlayer);
     backButton.addEventListener("click", closePlayer);
+    placematBackButton.addEventListener("click", closePlacemat);
+    placematVideoButton.addEventListener("click", () => openVideo(currentPlacematIndex, placematVideoButton));
     previousButton.addEventListener("click", () => showOffset(-1));
     nextButton.addEventListener("click", () => showOffset(1));
     replayButton.addEventListener("click", () => {
@@ -1724,11 +2354,30 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if (!player.classList.contains("is-open")) return;
-      if (event.key === "Escape") closePlayer();
-      if (event.key === "ArrowLeft") showOffset(-1);
-      if (event.key === "ArrowRight") showOffset(1);
+      if (player.classList.contains("is-open")) {
+        if (event.key === "Escape") closePlayer();
+        if (event.key === "ArrowLeft") showOffset(-1);
+        if (event.key === "ArrowRight") showOffset(1);
+        return;
+      }
+      if (placematView.classList.contains("is-open") && event.key === "Escape") {
+        closePlacemat();
+      }
     });
+
+    window.addEventListener("hashchange", () => {
+      const placematIndex = placematIndexFromHash();
+      if (placematIndex >= 0) {
+        openPlacemat(placematIndex, false);
+      } else if (placematView.classList.contains("is-open")) {
+        closePlacemat(false);
+      }
+    });
+
+    const initialPlacematIndex = placematIndexFromHash();
+    if (initialPlacematIndex >= 0) {
+      openPlacemat(initialPlacematIndex, false);
+    }
 
     const localHosts = ["localhost", "127.0.0.1", "::1"];
     const shouldUseHostedCache = "serviceWorker" in navigator && /^https?:$/.test(window.location.protocol) && !localHosts.includes(window.location.hostname);
