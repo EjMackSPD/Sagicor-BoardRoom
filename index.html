@@ -268,12 +268,14 @@
       color: inherit;
       background: #ffffff;
       box-shadow: 0 9px 18px rgba(3, 41, 79, 0.04);
-      cursor: default;
+      cursor: pointer;
       text-align: left;
       transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
     }
 
-    .pilot-card:focus-within {
+    .pilot-card:hover,
+    .pilot-card:focus-within,
+    .pilot-card:focus-visible {
       transform: translateY(-2px);
       border-color: rgba(98, 187, 70, 0.8);
       box-shadow: 0 15px 28px rgba(3, 41, 79, 0.12);
@@ -312,9 +314,10 @@
       width: 62px;
       height: 62px;
       margin-left: 0;
+      margin-top: 38px;
+      display: block;
     }
 
-    .pilot-icon-button,
     .pilot-video-button {
       text-decoration: none;
       border: 0;
@@ -322,24 +325,6 @@
       background: transparent;
       cursor: pointer;
       transition: background 140ms ease, transform 140ms ease;
-    }
-
-    .pilot-icon-button {
-      margin-top: 38px;
-    }
-
-    .pilot-icon-button:hover,
-    .pilot-icon-button:focus-visible {
-      background: rgba(29, 111, 228, 0.08);
-      outline: 2px solid rgba(29, 111, 228, 0.32);
-      outline-offset: 4px;
-      transform: scale(1.04);
-    }
-
-    .pilot-card.green .pilot-icon-button:hover,
-    .pilot-card.green .pilot-icon-button:focus-visible {
-      background: rgba(67, 160, 71, 0.1);
-      outline-color: rgba(67, 160, 71, 0.35);
     }
 
     .pilot-video-button {
@@ -1590,15 +1575,15 @@
               Assist / Knowledge
             </h2>
             <div class="track-cards">
-              <article class="pilot-card">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="1" aria-label="Open Sagicor KNOWS placemat">
                 <span class="pilot-number">1</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-knows" data-placemat-index="1" aria-label="Open Sagicor KNOWS placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M32 8v48M23 13c-7 0-12 5-12 12 0 3 1 5 3 7-3 2-5 5-5 9 0 7 5 12 12 12h11M41 13c7 0 12 5 12 12 0 3-1 5-3 7 3 2 5 5 5 9 0 7-5 12-12 12H32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <path d="M21 27h8M35 27h8M21 39h8M35 39h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="1" aria-label="Play Sagicor KNOWS video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1613,10 +1598,10 @@
                 <span class="pilot-footnote">Tested to Copilot-native rebuild for governed scale</span>
               </article>
 
-              <article class="pilot-card">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="0" aria-label="Open Relationship Network placemat">
                 <span class="pilot-number">2</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-relationship-network" data-placemat-index="0" aria-label="Open Relationship Network placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <circle cx="32" cy="32" r="6" stroke="currentColor" stroke-width="4"/>
                       <circle cx="12" cy="20" r="4" stroke="currentColor" stroke-width="4"/>
@@ -1625,7 +1610,7 @@
                       <circle cx="52" cy="46" r="4" stroke="currentColor" stroke-width="4"/>
                       <path d="M17 23 27 29M47 23 37 29M17 43l10-7M47 43l-10-7" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="0" aria-label="Play Relationship Network video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1655,16 +1640,16 @@
               Process Automation
             </h2>
             <div class="track-cards">
-              <article class="pilot-card green">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="5" aria-label="Open Client Web Disbursement Automation placemat">
                 <span class="pilot-number">3</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-client-web-disbursement" data-placemat-index="5" aria-label="Open Client Web Disbursement Automation placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M12 46a24 24 0 1 1 40 0" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <path d="M32 32 45 19" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <path d="M20 46h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="5" aria-label="Play Client Web Disbursement Automation video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1679,17 +1664,17 @@
                 <span class="pilot-footnote">First iteration live, reducing exceptions and expanding throughput</span>
               </article>
 
-              <article class="pilot-card green">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="2" aria-label="Open Group Health Deposit Identification placemat">
                 <span class="pilot-number">4</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-group-health-deposit" data-placemat-index="2" aria-label="Open Group Health Deposit Identification placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M15 37V27a17 17 0 0 1 34 0v10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <rect x="8" y="33" width="12" height="17" rx="4" stroke="currentColor" stroke-width="4"/>
                       <rect x="44" y="33" width="12" height="17" rx="4" stroke="currentColor" stroke-width="4"/>
                       <path d="M45 49c-2 5-7 7-13 7" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="2" aria-label="Play Group Health Deposit Identification video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1704,16 +1689,16 @@
                 <span class="pilot-footnote">PoC and prototype to validate with processors</span>
               </article>
 
-              <article class="pilot-card green">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="6" aria-label="Open Pre-Authorization Automation placemat">
                 <span class="pilot-number">5</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-pre-authorization" data-placemat-index="6" aria-label="Open Pre-Authorization Automation placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M20 13h24l6 7v35H14V20z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                       <path d="M24 30h16M24 40h16M24 50h10M22 21h20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <path d="m18 30 3 3 6-7M18 40l3 3 6-7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="6" aria-label="Play Pre-Authorization Automation video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1741,15 +1726,15 @@
               Platform Acceleration
             </h2>
             <div class="track-cards">
-              <article class="pilot-card">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="3" aria-label="Open ivari eApps Platform placemat">
                 <span class="pilot-number">6</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-eapps" data-placemat-index="3" aria-label="Open ivari eApps Platform placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M12 14h40v34H12zM8 54h48" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                       <path d="m23 27 4 4 8-10M23 39l4 4 8-10M40 27h6M40 39h6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="3" aria-label="Play ivari eApps Platform video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -1764,17 +1749,17 @@
                 <span class="pilot-footnote">Azure PoC built, scale through term-product launch path</span>
               </article>
 
-              <article class="pilot-card">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="4" aria-label="Open ivari Intelligent eForms Platform placemat">
                 <span class="pilot-number">7</span>
                 <span class="pilot-actions">
-                  <a class="pilot-icon pilot-icon-button" href="#placemat-eforms" data-placemat-index="4" aria-label="Open ivari Intelligent eForms Platform placemat">
+                  <span class="pilot-icon" aria-hidden="true">
                     <svg width="66" height="66" viewBox="0 0 64 64" fill="none">
                       <path d="M20 8h22l10 10v38H20z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
                       <path d="M42 8v12h10M28 29h16M28 39h16M28 49h8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                       <circle cx="48" cy="48" r="10" fill="#1d6fe4"/>
                       <path d="M48 53V43M43 48l5-5 5 5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                  </a>
+                  </span>
                   <button class="pilot-video-button" type="button" data-video-index="4" aria-label="Play ivari Intelligent eForms Platform video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
                   </button>
@@ -2213,7 +2198,8 @@
     }
 
     document.querySelectorAll(".pilot-video-button").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
         const index = Number(button.dataset.videoIndex);
         if (Number.isInteger(index) && videos[index]) {
           openVideo(index, button);
@@ -2221,13 +2207,20 @@
       });
     });
 
-    document.querySelectorAll("[data-placemat-index]").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const index = Number(button.dataset.placematIndex);
+    document.querySelectorAll(".pilot-card[data-placemat-index]").forEach((card) => {
+      const openCardPlacemat = () => {
+        const index = Number(card.dataset.placematIndex);
         if (Number.isInteger(index) && placemats[index]) {
           openPlacemat(index);
+        }
+      };
+
+      card.addEventListener("click", openCardPlacemat);
+      card.addEventListener("keydown", (event) => {
+        if (event.target.closest(".pilot-video-button")) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openCardPlacemat();
         }
       });
     });
