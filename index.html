@@ -768,39 +768,88 @@
     }
 
     .placemat-actions {
-      position: absolute;
-      top: 14px;
-      left: 50%;
+      position: fixed;
+      inset: var(--dashboard-margin) var(--dashboard-margin) auto var(--dashboard-margin);
       z-index: 4;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      align-items: center;
-      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      align-items: start;
+      pointer-events: none;
     }
 
     .placemat-action {
-      min-height: 44px;
-      display: inline-flex;
+      width: 58px;
+      height: 58px;
+      min-height: 0;
+      display: grid;
       align-items: center;
       justify-content: center;
-      gap: 9px;
       border: 1px solid rgba(29, 111, 228, 0.24);
-      border-radius: 8px;
-      padding: 10px 16px;
+      border-radius: 10px;
+      padding: 0;
       color: #0f4f99;
       background: rgba(255, 255, 255, 0.94);
       box-shadow: 0 10px 26px rgba(3, 41, 79, 0.08);
-      font-size: 14px;
-      font-weight: 900;
       cursor: pointer;
       backdrop-filter: blur(8px);
+      pointer-events: auto;
+      transition: transform 140ms ease, background 140ms ease, color 140ms ease;
     }
 
     .placemat-action.primary {
-      border-color: rgba(67, 160, 71, 0.36);
+      width: 66px;
+      height: 66px;
+      border-color: rgba(67, 160, 71, 0.44);
       color: #ffffff;
       background: linear-gradient(135deg, #1d6fe4, #43a047);
+    }
+
+    .placemat-action:hover,
+    .placemat-action:focus-visible {
+      color: #ffffff;
+      background: #1d6fe4;
+      outline: 2px solid rgba(29, 111, 228, 0.24);
+      outline-offset: 3px;
+      transform: translateY(-1px);
+    }
+
+    .placemat-action.primary:hover,
+    .placemat-action.primary:focus-visible {
+      background: linear-gradient(135deg, #0f5caf, #43a047);
+    }
+
+    .placemat-back-icon,
+    .placemat-play-icon {
+      position: relative;
+      display: block;
+    }
+
+    .placemat-back-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .placemat-back-icon::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 15px;
+      height: 15px;
+      border-left: 4px solid currentColor;
+      border-bottom: 4px solid currentColor;
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .placemat-play-icon {
+      width: 0;
+      height: 0;
+      margin-left: 5px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 22px solid currentColor;
     }
 
     .placemat-page {
@@ -2136,8 +2185,12 @@
   <section class="placemat-view" id="placematView" aria-label="Placemat detail" aria-hidden="true">
     <div class="placemat-shell">
       <div class="placemat-actions">
-        <button class="placemat-action" type="button" id="placematBackButton">Back to dashboard</button>
-        <button class="placemat-action primary" type="button" id="placematVideoButton">Watch video</button>
+        <button class="placemat-action" type="button" id="placematBackButton" aria-label="Back to dashboard">
+          <span class="placemat-back-icon" aria-hidden="true"></span>
+        </button>
+        <button class="placemat-action primary" type="button" id="placematVideoButton" aria-label="Play video">
+          <span class="placemat-play-icon" aria-hidden="true"></span>
+        </button>
       </div>
       <article class="placemat-page" id="placematContent"></article>
     </div>
