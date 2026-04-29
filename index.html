@@ -282,6 +282,33 @@
       outline: none;
     }
 
+    .pilot-card::after {
+      content: "";
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      z-index: 1;
+      width: 10px;
+      height: 10px;
+      border-top: 3px solid #1d6fe4;
+      border-right: 3px solid #1d6fe4;
+      opacity: 0.58;
+      pointer-events: none;
+      transform: translateY(-50%) rotate(45deg);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .pilot-card.green::after {
+      border-color: var(--green-600);
+    }
+
+    .pilot-card:hover::after,
+    .pilot-card:focus-within::after,
+    .pilot-card:focus-visible::after {
+      opacity: 0.95;
+      transform: translate(3px, -50%) rotate(45deg);
+    }
+
     .pilot-number {
       position: absolute;
       top: -2px;
