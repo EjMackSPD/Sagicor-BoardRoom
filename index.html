@@ -19,6 +19,16 @@
       --surface: #ffffff;
       --surface-soft: #f4f8fb;
       --shadow: 0 20px 60px rgba(3, 41, 79, 0.16);
+      --dashboard-margin: 24px;
+      --dashboard-width: 1920px;
+      --dashboard-height: 1080px;
+      --dashboard-frame-width: var(--dashboard-width);
+      --dashboard-frame-height: var(--dashboard-height);
+      --dashboard-scale: 1;
+      --placemat-width: 3840px;
+      --placemat-height: 2160px;
+      --placemat-frame-width: var(--placemat-width);
+      --placemat-frame-height: var(--placemat-height);
     }
 
     * {
@@ -54,16 +64,24 @@
       min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 18px;
+      padding: var(--dashboard-margin);
+      overflow: hidden;
       background:
         radial-gradient(circle at 86% 10%, rgba(98, 187, 70, 0.18), transparent 24rem),
         linear-gradient(135deg, #f8fbff 0%, #eff6fb 100%);
     }
 
+    .dashboard-frame {
+      position: relative;
+      width: var(--dashboard-frame-width);
+      height: var(--dashboard-frame-height);
+    }
+
     .portfolio-board {
       position: relative;
-      width: min(1300px, 100%);
-      min-height: min(708px, calc(100svh - 36px));
+      width: var(--dashboard-width);
+      height: var(--dashboard-height);
+      min-height: 0;
       display: grid;
       grid-template-rows: auto auto auto auto auto;
       gap: 9px;
@@ -73,6 +91,9 @@
       border-radius: 10px;
       background: #ffffff;
       box-shadow: 0 20px 54px rgba(3, 41, 79, 0.13);
+      transform: scale(var(--dashboard-scale));
+      transform-origin: top left;
+      will-change: transform;
     }
 
     .portfolio-hero {
@@ -138,16 +159,18 @@
     .value-row {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+      gap: 0;
       align-items: center;
     }
 
     .value-item {
-      min-height: 58px;
+      min-height: 66px;
       display: grid;
-      grid-template-columns: 72px minmax(0, 1fr);
-      gap: 8px;
+      grid-template-columns: 62px max-content;
+      gap: 14px;
       align-items: center;
+      justify-content: center;
+      padding: 0 22px;
       border-right: 2px solid #cfe0f4;
     }
 
@@ -179,9 +202,9 @@
     .value-item h2 {
       margin: 0;
       color: #1c6bd6;
-      font-size: 14px;
-      line-height: 1.05;
-      font-weight: 800;
+      font-size: 17px;
+      line-height: 1.04;
+      font-weight: 900;
     }
 
     .value-item.green h2 {
@@ -189,11 +212,11 @@
     }
 
     .value-item p {
-      margin: 4px 0 0;
+      margin: 5px 0 0;
       color: #1b4380;
-      font-size: 12px;
-      line-height: 1.16;
-      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.12;
+      font-weight: 800;
     }
 
     .track-grid {
@@ -254,13 +277,28 @@
     }
 
     .pilot-card {
+      --pilot-header-top: 14px;
+      --pilot-header-size: 28px;
+      --pilot-icon-column: 124px;
+      --pilot-icon-size: 102px;
+      --pilot-content-gap: 12px;
+      --pilot-content-top: 18px;
+      --pilot-copy-top: 40px;
+      --pilot-control-right: 12px;
+      --pilot-video-size: 44px;
+      --pilot-video-icon-size: 22px;
+      --pilot-arrow-size: 42px;
+      --pilot-arrow-mark-size: 12px;
+      --pilot-arrow-mark-right: 27px;
+      --pilot-arrow-stroke: 4px;
+      --pilot-copy-right: 64px;
       position: relative;
       width: 100%;
       min-height: 108px;
       display: grid;
-      grid-template-columns: 66px minmax(0, 1fr);
+      grid-template-columns: var(--pilot-icon-column) minmax(0, 1fr);
       grid-template-rows: minmax(0, 1fr) auto;
-      gap: 8px;
+      gap: 8px var(--pilot-content-gap);
       align-items: start;
       padding: 14px 16px 12px 16px;
       border: 2px solid #cfe0f4;
@@ -285,12 +323,12 @@
     .pilot-card::before {
       content: "";
       position: absolute;
-      right: 8px;
+      right: var(--pilot-control-right);
       top: 50%;
       z-index: 1;
-      width: 26px;
-      height: 26px;
-      border: 1px solid rgba(29, 111, 228, 0.28);
+      width: var(--pilot-arrow-size);
+      height: var(--pilot-arrow-size);
+      border: 2px solid rgba(29, 111, 228, 0.28);
       border-radius: 999px;
       background: rgba(29, 111, 228, 0.04);
       pointer-events: none;
@@ -301,13 +339,13 @@
     .pilot-card::after {
       content: "";
       position: absolute;
-      right: 18px;
+      right: var(--pilot-arrow-mark-right);
       top: 50%;
       z-index: 2;
-      width: 8px;
-      height: 8px;
-      border-top: 3px solid #1d6fe4;
-      border-right: 3px solid #1d6fe4;
+      width: var(--pilot-arrow-mark-size);
+      height: var(--pilot-arrow-mark-size);
+      border-top: var(--pilot-arrow-stroke) solid #1d6fe4;
+      border-right: var(--pilot-arrow-stroke) solid #1d6fe4;
       opacity: 0.74;
       pointer-events: none;
       transform: translateY(-50%) rotate(45deg);
@@ -328,7 +366,7 @@
     .pilot-card:focus-visible::before {
       border-color: rgba(29, 111, 228, 0.5);
       background: rgba(29, 111, 228, 0.09);
-      transform: translate(2px, -50%);
+      transform: translate(4px, -50%);
     }
 
     .pilot-card.green:hover::before,
@@ -342,7 +380,7 @@
     .pilot-card:focus-within::after,
     .pilot-card:focus-visible::after {
       opacity: 0.95;
-      transform: translate(2px, -50%) rotate(45deg);
+      transform: translate(4px, -50%) rotate(45deg);
     }
 
     .pilot-number {
@@ -370,21 +408,27 @@
       grid-column: 1;
       grid-row: 1;
       display: grid;
-      align-self: center;
+      align-self: start;
       justify-self: center;
+      place-items: center;
       justify-items: center;
+      margin-top: var(--pilot-content-top);
     }
 
     .pilot-icon {
-      position: absolute;
-      top: 12px;
-      left: 44px;
+      position: static;
       z-index: 1;
-      width: 28px;
-      height: 28px;
+      width: var(--pilot-icon-size);
+      height: var(--pilot-icon-size);
       margin: 0;
       display: block;
       pointer-events: none;
+    }
+
+    .pilot-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .pilot-video-button {
@@ -398,11 +442,11 @@
 
     .pilot-video-button {
       position: absolute;
-      top: 6px;
-      right: 7px;
+      top: var(--pilot-header-top);
+      right: var(--pilot-control-right);
       z-index: 3;
-      width: 34px;
-      height: 28px;
+      width: var(--pilot-video-size);
+      height: var(--pilot-video-size);
       display: grid;
       place-items: center;
       border: 1px solid rgba(29, 111, 228, 0.26);
@@ -433,8 +477,8 @@
     }
 
     .pilot-video-button svg {
-      width: 18px;
-      height: 18px;
+      width: var(--pilot-video-icon-size);
+      height: var(--pilot-video-icon-size);
       display: block;
     }
 
@@ -444,20 +488,21 @@
     }
 
     .pilot-card.green .pilot-icon {
-      width: 28px;
-      height: 28px;
+      width: var(--pilot-icon-size);
+      height: var(--pilot-icon-size);
       margin-top: 0;
     }
 
     .pilot-copy {
-      grid-column: 1 / -1;
+      grid-column: 2;
       grid-row: 1;
       min-width: 0;
       display: grid;
-      align-self: stretch;
+      align-self: start;
       align-content: start;
       gap: 4px;
-      padding: 0 36px 0 0;
+      margin-top: var(--pilot-copy-top);
+      padding: 0 var(--pilot-copy-right) 0 0;
       pointer-events: none;
     }
 
@@ -474,15 +519,13 @@
     }
 
     .pilot-card.green .pilot-copy {
-      padding-right: 36px;
+      padding-right: var(--pilot-copy-right);
     }
 
     .pilot-copy h3 {
-      min-height: 34px;
-      margin: 0 32px 0 72px;
-      display: grid;
-      align-items: center;
-      justify-items: start;
+      min-height: 0;
+      margin: 0;
+      display: block;
       text-align: left;
     }
 
@@ -490,6 +533,7 @@
     .pilot-copy ul {
       width: 100%;
       max-width: none;
+      margin-left: 0;
       transform: none;
       text-align: left;
     }
@@ -513,6 +557,16 @@
       margin: 0;
       padding: 0;
       list-style: none;
+    }
+
+    .pilot-card .pilot-copy p,
+    .pilot-card .pilot-copy ul {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .pilot-card .pilot-copy p {
+      margin-top: 1px;
     }
 
     .pilot-card li,
@@ -558,12 +612,13 @@
     }
 
     .summary-box {
-      min-height: 86px;
+      min-height: 96px;
       display: grid;
-      grid-template-columns: 96px 124px minmax(0, 1fr);
-      gap: 8px;
+      grid-template-columns: 84px max-content max-content;
+      gap: 16px;
       align-items: center;
-      padding: 11px 18px;
+      justify-content: center;
+      padding: 12px 22px;
       border: 2px solid #c8ddf4;
       border-radius: 8px;
       background: #ffffff;
@@ -584,6 +639,25 @@
 
     .summary-box.green h2 {
       color: var(--green-600);
+    }
+
+    .summary-list {
+      gap: 6px;
+      align-self: center;
+      justify-self: start;
+    }
+
+    .summary-list li {
+      padding-left: 20px;
+      font-size: clamp(11px, 0.9vw, 13px);
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .summary-list li::before {
+      top: 2px;
+      width: 12px;
+      height: 12px;
     }
 
     .summary-icon {
@@ -645,32 +719,37 @@
       inset: 0;
       z-index: 18;
       display: none;
-      overflow: auto;
-      padding: 0;
+      overflow: hidden;
+      place-items: center;
+      padding: var(--dashboard-margin);
       background:
         radial-gradient(circle at 94% 5%, rgba(98, 187, 70, 0.16), transparent 22rem),
         linear-gradient(135deg, #f7fbfe 0%, #eef5fa 54%, #ffffff 100%);
     }
 
     .placemat-view.is-open {
-      display: block;
+      display: grid;
     }
 
     .placemat-shell {
-      width: min(calc(min(708px, calc(100svh - 36px)) * 16 / 9), calc(100vw - 24px));
+      position: relative;
+      width: var(--placemat-frame-width);
+      height: var(--placemat-frame-height);
       min-height: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 10px;
+      margin: 0;
+      display: block;
     }
 
     .placemat-actions {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      z-index: 4;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       gap: 12px;
       align-items: center;
-      padding-top: 8px;
+      transform: translateX(-50%);
     }
 
     .placemat-action {
@@ -688,6 +767,7 @@
       font-size: 14px;
       font-weight: 900;
       cursor: pointer;
+      backdrop-filter: blur(8px);
     }
 
     .placemat-action.primary {
@@ -697,6 +777,8 @@
     }
 
     .placemat-page {
+      width: 100%;
+      height: 100%;
       min-height: 0;
       display: grid;
       grid-template-rows: auto auto 1fr auto auto;
@@ -711,6 +793,7 @@
     .placemat-page.image-mode {
       min-height: 0;
       width: 100%;
+      height: 100%;
       aspect-ratio: 16 / 9;
       display: grid;
       grid-template-rows: minmax(0, 1fr);
@@ -1302,15 +1385,15 @@
 
     @media (max-height: 820px) and (min-width: 901px) {
       .portfolio-landing {
-        padding: 8px;
+        padding: var(--dashboard-margin);
       }
 
       .portfolio-board {
-        width: min(1420px, calc(100vw - 12px));
-        min-height: calc(100svh - 16px);
+        width: var(--dashboard-width);
+        height: var(--dashboard-height);
+        min-height: 0;
         gap: 6px;
         padding: 10px 20px 9px;
-        zoom: 0.9;
       }
 
       .portfolio-title {
@@ -1341,8 +1424,10 @@
       }
 
       .value-item {
-        min-height: 52px;
-        grid-template-columns: 64px minmax(0, 1fr);
+        min-height: 58px;
+        grid-template-columns: 56px max-content;
+        gap: 12px;
+        padding: 0 16px;
       }
 
       .value-icon {
@@ -1351,11 +1436,12 @@
       }
 
       .value-item h2 {
-        font-size: 13px;
+        font-size: 15px;
       }
 
       .value-item p {
-        font-size: 11px;
+        font-size: 12px;
+        line-height: 1.12;
       }
 
       .track-grid {
@@ -1373,8 +1459,23 @@
       }
 
       .pilot-card {
+        --pilot-header-top: 10px;
+        --pilot-header-size: 26px;
+        --pilot-icon-column: 112px;
+        --pilot-icon-size: 92px;
+        --pilot-content-gap: 10px;
+        --pilot-content-top: 14px;
+        --pilot-copy-top: 34px;
+        --pilot-control-right: 10px;
+        --pilot-video-size: 38px;
+        --pilot-video-icon-size: 19px;
+        --pilot-arrow-size: 36px;
+        --pilot-arrow-mark-size: 10px;
+        --pilot-arrow-mark-right: 23px;
+        --pilot-arrow-stroke: 4px;
+        --pilot-copy-right: 56px;
         min-height: 92px;
-        grid-template-columns: 60px minmax(0, 1fr);
+        grid-template-columns: var(--pilot-icon-column) minmax(0, 1fr);
         gap: 7px;
         padding: 10px 12px 9px 12px;
       }
@@ -1386,8 +1487,8 @@
       }
 
       .pilot-icon {
-        width: 26px;
-        height: 26px;
+        width: var(--pilot-icon-size);
+        height: var(--pilot-icon-size);
       }
 
       .pilot-card h3 {
@@ -1407,14 +1508,30 @@
         font-size: 9px;
       }
 
+      .summary-list {
+        gap: 5px;
+      }
+
+      .summary-list li {
+        padding-left: 18px;
+        font-size: 10px;
+        line-height: 1.14;
+      }
+
+      .summary-list li::before {
+        width: 10px;
+        height: 10px;
+      }
+
       .summary-band {
         gap: 10px;
       }
 
       .summary-box {
-        min-height: 72px;
-        grid-template-columns: 86px 120px minmax(0, 1fr);
-        padding: 8px 16px;
+        min-height: 84px;
+        grid-template-columns: 74px max-content max-content;
+        gap: 12px;
+        padding: 8px 14px;
       }
 
       .summary-box h2 {
@@ -1437,12 +1554,21 @@
       .portfolio-landing {
         place-items: start center;
         padding: 14px;
+        overflow: visible;
+      }
+
+      .dashboard-frame {
+        width: 100%;
+        height: auto;
       }
 
       .portfolio-board {
+        width: 100%;
+        height: auto;
         min-height: auto;
         padding: 16px;
         gap: 12px;
+        transform: none;
       }
 
       .portfolio-hero {
@@ -1455,9 +1581,13 @@
 
       .value-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 0;
       }
 
       .value-item {
+        grid-template-columns: 58px minmax(0, 1fr);
+        justify-content: start;
+        padding: 0;
         border-right: 0;
       }
 
@@ -1503,7 +1633,7 @@
       }
 
       .value-item {
-        min-height: 48px;
+        min-height: 56px;
         grid-template-columns: 52px minmax(0, 1fr);
       }
 
@@ -1517,21 +1647,35 @@
       }
 
       .pilot-card {
-        grid-template-columns: 58px minmax(0, 1fr);
+        --pilot-icon-column: 68px;
+        --pilot-icon-size: 54px;
+        --pilot-content-gap: 8px;
+        --pilot-content-top: 8px;
+        --pilot-copy-top: 8px;
+        --pilot-control-right: 8px;
+        --pilot-video-size: 34px;
+        --pilot-video-icon-size: 17px;
+        --pilot-arrow-size: 32px;
+        --pilot-arrow-mark-size: 9px;
+        --pilot-arrow-mark-right: 20px;
+        --pilot-arrow-stroke: 3px;
+        --pilot-copy-right: 44px;
+        grid-template-columns: var(--pilot-icon-column) minmax(0, 1fr);
         gap: 6px;
       }
 
       .pilot-copy {
-        padding-right: 34px;
+        padding-right: var(--pilot-copy-right);
       }
 
       .pilot-icon {
-        width: 24px;
-        height: 24px;
+        width: var(--pilot-icon-size);
+        height: var(--pilot-icon-size);
       }
 
       .summary-box {
         grid-template-columns: 68px minmax(0, 1fr);
+        justify-content: stretch;
         padding: 10px;
       }
 
@@ -1586,7 +1730,8 @@
 <body>
   <div class="app">
     <header class="portfolio-landing">
-      <section class="portfolio-board" aria-labelledby="portfolio-title">
+      <div class="dashboard-frame">
+        <section class="portfolio-board" aria-labelledby="portfolio-title">
         <div class="portfolio-hero">
           <div>
             <h1 class="portfolio-title" id="portfolio-title"><span class="brand-blue">Sagicor</span> AI Pilot Portfolio</h1>
@@ -1911,7 +2056,8 @@
           <span>Stronger decisions</span>
           <span>Reusable foundations</span>
         </div>
-      </section>
+        </section>
+      </div>
     </header>
 
   </div>
@@ -2090,11 +2236,52 @@
     const centerPlayButton = document.getElementById("centerPlayButton");
     const playerError = document.getElementById("playerError");
     const playerErrorText = document.getElementById("playerErrorText");
+    const dashboardFrame = document.querySelector(".dashboard-frame");
+    const dashboardDesktopQuery = window.matchMedia("(min-width: 901px)");
 
     let currentIndex = 0;
     let currentPlacematIndex = 0;
     let lastFocusedCard = null;
     const hostedVideoBase = "/videos/";
+
+    function updateDashboardFrame() {
+      if (!dashboardFrame) return;
+
+      const root = document.documentElement;
+      const styles = getComputedStyle(root);
+      const baseWidth = parseFloat(styles.getPropertyValue("--dashboard-width")) || 1920;
+      const baseHeight = parseFloat(styles.getPropertyValue("--dashboard-height")) || 1080;
+      const placematWidth = parseFloat(styles.getPropertyValue("--placemat-width")) || 3840;
+      const placematHeight = parseFloat(styles.getPropertyValue("--placemat-height")) || 2160;
+      const margin = parseFloat(styles.getPropertyValue("--dashboard-margin")) || 24;
+      const availableWidth = Math.max(window.innerWidth - margin * 2, 1);
+      const availableHeight = Math.max(window.innerHeight - margin * 2, 1);
+      const placematScale = Math.max(Math.min(availableWidth / placematWidth, availableHeight / placematHeight, 1), 0.1);
+
+      root.style.setProperty("--placemat-frame-width", `${placematWidth * placematScale}px`);
+      root.style.setProperty("--placemat-frame-height", `${placematHeight * placematScale}px`);
+
+      if (!dashboardDesktopQuery.matches) {
+        root.style.setProperty("--dashboard-scale", "1");
+        root.style.setProperty("--dashboard-frame-width", "100%");
+        root.style.setProperty("--dashboard-frame-height", "auto");
+        return;
+      }
+
+      const maxScale = Math.min(3840 / baseWidth, 2160 / baseHeight);
+      const scale = Math.max(Math.min(availableWidth / baseWidth, availableHeight / baseHeight, maxScale), 0.1);
+
+      root.style.setProperty("--dashboard-scale", scale.toFixed(4));
+      root.style.setProperty("--dashboard-frame-width", `${baseWidth * scale}px`);
+      root.style.setProperty("--dashboard-frame-height", `${baseHeight * scale}px`);
+    }
+
+    updateDashboardFrame();
+    window.addEventListener("resize", updateDashboardFrame);
+    dashboardDesktopQuery.addEventListener("change", updateDashboardFrame);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updateDashboardFrame);
+    }
 
     function videoPath(file) {
       const localHosts = ["localhost", "127.0.0.1", "::1"];
@@ -2213,6 +2400,7 @@
     function openPlacemat(index, updateHash = true) {
       currentPlacematIndex = index;
       renderPlacemat(index);
+      updateDashboardFrame();
       placematView.classList.add("is-open");
       placematView.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
