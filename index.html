@@ -282,31 +282,67 @@
       outline: none;
     }
 
+    .pilot-card::before {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      z-index: 1;
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(29, 111, 228, 0.28);
+      border-radius: 999px;
+      background: rgba(29, 111, 228, 0.04);
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
     .pilot-card::after {
       content: "";
       position: absolute;
-      right: 13px;
+      right: 18px;
       top: 50%;
-      z-index: 1;
-      width: 10px;
-      height: 10px;
+      z-index: 2;
+      width: 8px;
+      height: 8px;
       border-top: 3px solid #1d6fe4;
       border-right: 3px solid #1d6fe4;
-      opacity: 0.58;
+      opacity: 0.74;
       pointer-events: none;
       transform: translateY(-50%) rotate(45deg);
       transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .pilot-card.green::before {
+      border-color: rgba(67, 160, 71, 0.3);
+      background: rgba(98, 187, 70, 0.08);
     }
 
     .pilot-card.green::after {
       border-color: var(--green-600);
     }
 
+    .pilot-card:hover::before,
+    .pilot-card:focus-within::before,
+    .pilot-card:focus-visible::before {
+      border-color: rgba(29, 111, 228, 0.5);
+      background: rgba(29, 111, 228, 0.09);
+      transform: translate(2px, -50%);
+    }
+
+    .pilot-card.green:hover::before,
+    .pilot-card.green:focus-within::before,
+    .pilot-card.green:focus-visible::before {
+      border-color: rgba(67, 160, 71, 0.55);
+      background: rgba(98, 187, 70, 0.13);
+    }
+
     .pilot-card:hover::after,
     .pilot-card:focus-within::after,
     .pilot-card:focus-visible::after {
       opacity: 0.95;
-      transform: translate(3px, -50%) rotate(45deg);
+      transform: translate(2px, -50%) rotate(45deg);
     }
 
     .pilot-number {
