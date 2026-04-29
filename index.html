@@ -29,6 +29,7 @@
       --placemat-height: 2160px;
       --placemat-frame-width: var(--placemat-width);
       --placemat-frame-height: var(--placemat-height);
+      --placemat-image-inset: 18px;
     }
 
     * {
@@ -290,7 +291,6 @@
       --pilot-video-icon-size: 23px;
       --pilot-arrow-size: 42px;
       --pilot-arrow-mark-size: 12px;
-      --pilot-arrow-mark-right: 27px;
       --pilot-arrow-stroke: 4px;
       --pilot-copy-right: 64px;
       position: relative;
@@ -344,7 +344,7 @@
     .pilot-card::after {
       content: "";
       position: absolute;
-      right: var(--pilot-arrow-mark-right);
+      right: calc(var(--pilot-control-right) + (var(--pilot-arrow-size) - var(--pilot-arrow-mark-size)) / 2);
       top: 50%;
       z-index: 2;
       width: var(--pilot-arrow-mark-size);
@@ -883,7 +883,7 @@
       min-height: 0;
       display: grid;
       place-items: center;
-      padding: 0;
+      padding: var(--placemat-image-inset);
       background: #ffffff;
     }
 
@@ -1545,11 +1545,10 @@
         --pilot-copy-max: 310px;
         --pilot-control-right: -2px;
         --pilot-video-size: var(--pilot-corner-size);
-        --pilot-video-icon-size: 20px;
-        --pilot-arrow-size: 36px;
-        --pilot-arrow-mark-size: 10px;
-        --pilot-arrow-mark-right: 23px;
-        --pilot-arrow-stroke: 4px;
+      --pilot-video-icon-size: 20px;
+      --pilot-arrow-size: 36px;
+      --pilot-arrow-mark-size: 10px;
+      --pilot-arrow-stroke: 4px;
         --pilot-copy-right: 56px;
         min-height: 92px;
         gap: 7px;
@@ -1744,7 +1743,6 @@
         --pilot-video-icon-size: 18px;
         --pilot-arrow-size: 32px;
         --pilot-arrow-mark-size: 9px;
-        --pilot-arrow-mark-right: 20px;
         --pilot-arrow-stroke: 3px;
         --pilot-copy-right: 44px;
         gap: 6px;
