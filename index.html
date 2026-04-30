@@ -809,6 +809,27 @@
       transition: transform 140ms ease, background 140ms ease, color 140ms ease;
     }
 
+    #placematBackButton {
+      position: fixed;
+      top: calc(var(--dashboard-margin) + 2px);
+      left: var(--dashboard-margin);
+      width: 66px;
+      height: 58px;
+      border: 1px solid rgba(5, 78, 160, 0.24);
+      border-left: 0;
+      border-radius: 0 8px 8px 0;
+      clip-path: polygon(0 5px, 100% 0, 100% 100%, 0 calc(100% - 5px));
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+      box-shadow:
+        inset -8px 0 0 rgba(0, 73, 108, 0.16),
+        0 7px 12px rgba(0, 73, 108, 0.14);
+      backdrop-filter: none;
+      transform-origin: left center;
+    }
+
     .placemat-action.primary {
       position: fixed;
       top: calc(var(--dashboard-margin) + 48px);
@@ -830,6 +851,15 @@
       transform: translateY(-1px);
     }
 
+    #placematBackButton:hover,
+    #placematBackButton:focus-visible {
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+      filter: saturate(1.08) brightness(1.03);
+      transform: translateX(-2px);
+    }
+
     .placemat-action.primary:hover,
     .placemat-action.primary:focus-visible {
       color: var(--play-color);
@@ -837,9 +867,42 @@
     }
 
     .placemat-back-icon,
+    .placemat-home-icon,
     .placemat-play-icon {
       position: relative;
       display: block;
+    }
+
+    .placemat-home-icon {
+      width: 28px;
+      height: 26px;
+      margin-right: 6px;
+    }
+
+    .placemat-home-icon::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 2px;
+      width: 19px;
+      height: 19px;
+      border-left: 4px solid currentColor;
+      border-top: 4px solid currentColor;
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .placemat-home-icon::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      bottom: 0;
+      width: 15px;
+      height: 15px;
+      border: 4px solid currentColor;
+      border-top: 0;
+      border-radius: 0 0 3px 3px;
+      background: transparent;
     }
 
     .placemat-back-icon {
@@ -2259,6 +2322,187 @@
       font-size: 72px;
     }
 
+    .pm-client-web-disbursement .pm-main.cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 42px;
+      align-items: stretch;
+    }
+
+    .pm-client-web-disbursement .pm-main.cols-5 .pm-panel {
+      grid-template-rows: auto minmax(220px, auto) minmax(0, 1fr);
+      gap: 22px;
+      padding: 34px 38px 32px;
+      border-width: 4px;
+      box-shadow: 0 12px 30px rgba(0, 73, 108, 0.07);
+    }
+
+    .pm-client-web-disbursement .pm-panel-head {
+      min-height: 122px;
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .pm-client-web-disbursement .pm-step-number {
+      width: 86px;
+      height: 86px;
+      font-size: 50px;
+      box-shadow: inset 0 -10px 0 rgba(0, 73, 108, 0.16);
+    }
+
+    .pm-client-web-disbursement .pm-panel h3 {
+      font-size: 38px;
+      line-height: 1.12;
+    }
+
+    .pm-client-web-disbursement .pm-panel-body {
+      color: #00496C;
+      font-size: 31px;
+      line-height: 1.25;
+      font-weight: 650;
+    }
+
+    .pm-client-web-disbursement .pm-process-pipe {
+      min-height: 0;
+      height: auto;
+      align-self: start;
+      align-content: start;
+      padding-top: 44px;
+      padding-bottom: 0;
+    }
+
+    .pm-client-web-disbursement .pm-process-pipe > .pm-icon-bubble[style] {
+      width: 282px !important;
+      height: 224px !important;
+      border-radius: 28px !important;
+      color: #00B3EF;
+      background:
+        linear-gradient(180deg, #ffffff, #f7fbff);
+      border-color: #cfe0f4;
+      box-shadow:
+        0 18px 30px rgba(0, 73, 108, 0.10),
+        inset 0 0 0 6px rgba(0, 179, 239, 0.05);
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(3) .pm-process-pipe > .pm-icon-bubble[style],
+    .pm-client-web-disbursement .pm-panel:nth-child(4) .pm-process-pipe > .pm-icon-bubble[style] {
+      width: 236px !important;
+      height: 236px !important;
+      border-radius: 999px !important;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(4) .pm-process-pipe > .pm-icon-bubble[style] {
+      color: #ffffff !important;
+      background: radial-gradient(circle at 42% 35%, #82C341, #18923a) !important;
+      border-color: #c7eec3 !important;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-process-pipe,
+    .pm-client-web-disbursement .pm-panel:nth-child(3) .pm-process-pipe,
+    .pm-client-web-disbursement .pm-panel:nth-child(4) .pm-process-pipe {
+      padding-top: 56px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-process-pipe {
+      position: relative;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-process-pipe::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: calc(50% + 28px);
+      width: 320px;
+      height: 210px;
+      border-radius: 999px;
+      border: 3px dashed rgba(130, 195, 65, 0.44);
+      transform: translate(-50%, -48%);
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-ai-orb {
+      width: 244px !important;
+      height: 244px !important;
+      box-shadow:
+        0 0 0 22px rgba(130, 195, 65, 0.12),
+        0 16px 30px rgba(0, 73, 108, 0.12) !important;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-ai-orb strong {
+      font-size: 72px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) {
+      grid-template-rows: auto auto auto minmax(0, 1fr);
+      gap: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 58%, #f5fbff 100%);
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-large-percent {
+      min-height: 154px;
+      align-items: center;
+      padding: 24px 26px;
+      border-width: 4px;
+      border-color: #bde4fb;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #f8fcff 0%, #eef9ff 100%);
+      box-shadow: inset 0 0 0 2px rgba(0, 179, 239, 0.04);
+      font-size: 32px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-large-percent strong {
+      font-size: 88px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-callout {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 128px;
+      padding: 24px 28px;
+      border-width: 4px;
+      border-radius: 22px;
+      text-align: center;
+      background: #f3fbef;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-callout span {
+      display: none;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-callout strong {
+      margin: 0;
+      color: var(--green-600);
+      font-size: 38px;
+      line-height: 1.05;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-panel-body {
+      align-self: start;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      margin-top: 4px;
+      padding: 24px 26px;
+      border: 3px solid #cfe0f4;
+      border-radius: 20px;
+      background: #ffffff;
+      font-size: 29px;
+      line-height: 1.18;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(5) .pm-panel-body::before {
+      content: "✓";
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #ffffff;
+      background: #00B3EF;
+      box-shadow: 0 0 0 9px rgba(0, 179, 239, 0.12);
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
     .pm-layout-cols-5 .pm-bottom {
       gap: 30px;
       min-height: 0;
@@ -2363,6 +2607,44 @@
       gap: 9px;
     }
 
+    .pm-group .pm-box.example .pm-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(170px, 1fr) 72px) minmax(170px, 1fr);
+      column-gap: 20px;
+      row-gap: 0;
+      align-items: start;
+      justify-items: center;
+      width: 100%;
+    }
+
+    .pm-group .pm-box.example .pm-flow-step {
+      display: grid;
+      grid-template-rows: 112px minmax(0, auto);
+      justify-items: center;
+      align-items: start;
+      width: 100%;
+      max-width: none;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .pm-group .pm-box.example .pm-flow-step .pm-icon-bubble {
+      align-self: center;
+      justify-self: center;
+    }
+
+    .pm-group .pm-box.example .pm-flow-step > span:last-child {
+      display: block;
+      max-width: 210px;
+      justify-self: center;
+      text-align: center;
+    }
+
+    .pm-group .pm-box.example .pm-flow-arrow {
+      align-self: start;
+      margin-top: 40px;
+    }
+
     .pm-knows .pm-panel {
       grid-template-rows: auto auto minmax(0, 1fr);
       align-content: stretch;
@@ -2422,6 +2704,68 @@
     .pm-knows-engine-graphic img {
       width: 92%;
       height: 92%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .pm-match-engine-graphic {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .pm-panel-visual-matchEngine {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(2) {
+      grid-template-rows: auto auto minmax(0, 1fr);
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(1) {
+      grid-template-rows: auto auto minmax(0, 1fr);
+      align-content: stretch;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(1) .pm-panel-visual-iconList {
+      height: 760px;
+      min-height: 0;
+      display: grid;
+      align-self: start;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(1) .pm-list {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      align-items: center;
+      gap: 0;
+      padding: 10px 0 58px;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(1) .pm-list li {
+      align-self: center;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(2) .pm-match-engine-graphic img {
+      width: auto;
+      height: 760px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .pm-match-engine-graphic img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
       display: block;
       object-fit: contain;
       object-position: center;
@@ -3747,8 +4091,8 @@
   <section class="placemat-view" id="placematView" aria-label="Placemat detail" aria-hidden="true">
     <div class="placemat-shell">
       <div class="placemat-actions">
-        <button class="placemat-action" type="button" id="placematBackButton" aria-label="Back to dashboard">
-          <span class="placemat-back-icon" aria-hidden="true"></span>
+        <button class="placemat-action" type="button" id="placematBackButton" aria-label="Home: back to dashboard">
+          <span class="placemat-home-icon" aria-hidden="true"></span>
         </button>
         <button class="placemat-action primary" type="button" id="placematVideoButton" aria-label="Play video">
           <span class="placemat-play-icon" aria-hidden="true"></span>
@@ -4300,6 +4644,7 @@
             title: "AI Assistant Engine",
             subtitle: "Find patterns. Recommend the most likely match. Explain why.",
             visual: "matchEngine",
+            graphic: "placemats/group-health-engine-graphic.png",
             orbTitle: "AI Assistant",
             orbSub: "Pattern Recognition<br>+ ML Ranking",
             howTitle: "How it works",
@@ -4669,6 +5014,13 @@
     }
 
     function renderMatchEngine(panel) {
+      if (panel.graphic) {
+        return `
+          <div class="pm-match-engine-graphic">
+            <img src="${panel.graphic}" alt="${panel.title} graphic">
+          </div>
+        `;
+      }
       return `
         <div class="pm-engine" style="grid-template-columns:.82fr 1.15fr .72fr">
           <div class="pm-how-box">
@@ -4860,7 +5212,7 @@
         renderGeneratedPlacemat(index);
         return;
       }
-      placematContent.className = `placemat-page html-mode pm-${page.type || "standard"} pm-layout-${page.panelsClass || "relationship"} ${page.type === "relationship" ? "pm-relationship" : ""}`;
+      placematContent.className = `placemat-page html-mode pm-${page.type || "standard"} pm-${item.slug} pm-layout-${page.panelsClass || "relationship"} ${page.type === "relationship" ? "pm-relationship" : ""}`;
       placematContent.innerHTML = page.type === "relationship" ? renderRelationshipPlacemat(page) : renderStandardHtmlPlacemat(page);
     }
 
