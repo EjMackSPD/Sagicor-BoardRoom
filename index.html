@@ -400,16 +400,21 @@
       display: grid;
       place-items: center;
       border-radius: 7px 0 8px 0;
-      color: #ffffff;
-      background: #00B3EF;
-      box-shadow: inset -1px -1px 0 rgba(255, 255, 255, 0.22), 0 3px 7px rgba(0, 73, 108, 0.12);
+      color: #00B3EF;
+      border: 2px solid rgba(0, 179, 239, 0.5);
+      border-top-width: 0;
+      border-left-width: 0;
+      background: #ffffff;
+      box-shadow: inset -1px -1px 0 rgba(0, 179, 239, 0.1), 0 3px 7px rgba(0, 73, 108, 0.12);
       font-size: 20px;
       line-height: 1;
       font-weight: 900;
     }
 
     .pilot-card.green .pilot-number {
-      background: var(--green-600);
+      color: var(--green-600);
+      border-color: rgba(130, 195, 65, 0.62);
+      box-shadow: inset -1px -1px 0 rgba(130, 195, 65, 0.12), 0 3px 7px rgba(0, 73, 108, 0.12);
     }
 
     .pilot-actions {
@@ -1704,19 +1709,45 @@
     }
 
     .pm-relationship {
-      grid-template-rows: 360px 150px 1210px 230px;
+      grid-template-rows: 340px 150px 1236px 252px;
       align-content: space-between;
       gap: 0;
     }
 
     .pm-relationship .pm-main {
-      grid-template-columns: 0.72fr 2.1fr 1.1fr;
-      gap: 48px;
+      grid-template-columns: 0.78fr 2.28fr 1.08fr;
+      gap: 42px;
+      align-items: stretch;
+    }
+
+    .pm-relationship .pm-panel {
+      padding: 34px 40px;
+      gap: 26px;
+    }
+
+    .pm-relationship .pm-panel > .pm-list {
+      height: 100%;
+      align-content: start;
+      gap: 32px;
+      padding-top: 14px;
+    }
+
+    .pm-relationship .pm-panel > .pm-list li {
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 24px;
+      font-size: 29px;
+      line-height: 1.16;
+    }
+
+    .pm-relationship .pm-panel > .pm-list .pm-small-icon {
+      width: 68px;
+      height: 68px;
     }
 
     .pm-network-card {
       position: relative;
-      padding-top: 66px;
+      display: block;
+      padding: 72px 34px 28px;
       overflow: visible;
     }
 
@@ -1739,10 +1770,20 @@
 
     .pm-network {
       position: relative;
-      width: 1040px;
-      height: 930px;
+      width: 100%;
+      height: 100%;
       min-height: 0;
       margin: 0 auto;
+    }
+
+    .pm-network-inner {
+      position: absolute;
+      left: 50%;
+      top: 52%;
+      width: 1040px;
+      height: 930px;
+      transform: translate(-50%, -50%) scale(1.18);
+      transform-origin: center;
     }
 
     .pm-network-lines {
@@ -1795,6 +1836,8 @@
     .pm-fraud {
       padding: 0;
       overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
     }
 
     .pm-fraud-header,
@@ -1811,8 +1854,8 @@
 
     .pm-chat {
       display: grid;
-      gap: 24px;
-      padding: 26px 34px 16px;
+      gap: 28px;
+      padding: 36px 36px 20px;
     }
 
     .pm-chat-row {
@@ -1823,12 +1866,12 @@
     }
 
     .pm-chat-bubble {
-      padding: 18px 24px;
+      padding: 22px 26px;
       border: 3px solid #d3e4f7;
       border-radius: 16px;
       background: #f8fbff;
       color: #00496C;
-      font-size: 23px;
+      font-size: 25px;
       line-height: 1.24;
       font-weight: 700;
     }
@@ -1844,7 +1887,8 @@
     }
 
     .pm-summary {
-      margin: 0 34px 22px;
+      align-self: end;
+      margin: 0 36px 30px;
       border: 3px solid #bee7bb;
       border-radius: 14px;
       overflow: hidden;
@@ -1852,9 +1896,9 @@
 
     .pm-summary-body {
       display: grid;
-      gap: 18px;
-      padding: 22px 28px;
-      font-size: 21px;
+      gap: 20px;
+      padding: 26px 30px;
+      font-size: 23px;
       line-height: 1.24;
       font-weight: 700;
     }
@@ -1862,9 +1906,9 @@
     .pm-workflow {
       display: grid;
       grid-template-columns: 300px repeat(6, minmax(0, 1fr));
-      gap: 26px;
+      gap: 22px;
       align-items: center;
-      padding: 20px 42px;
+      padding: 26px 42px;
       border: 4px solid #cfe0f4;
       border-radius: 22px;
       background: #ffffff;
@@ -1879,21 +1923,36 @@
     }
 
     .pm-workflow-step {
+      position: relative;
       display: grid;
       grid-template-columns: 78px minmax(0, 1fr);
       gap: 16px;
       align-items: center;
       color: #00496C;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 1.22;
       font-weight: 650;
+    }
+
+    .pm-workflow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      border-top: 5px solid #00B3EF;
+      border-right: 5px solid #00B3EF;
+      border-radius: 2px;
+      opacity: 0.72;
+      transform: translateY(-50%) rotate(45deg);
     }
 
     .pm-workflow-step strong {
       display: block;
       margin-bottom: 4px;
       color: #00496C;
-      font-size: 23px;
+      font-size: 25px;
       font-weight: 900;
     }
 
@@ -4663,28 +4722,30 @@
         { x: 50, y: 82, icon: "person", color: "green", html: "<strong>Jane Smith</strong>Spouse<br>Client ID: 654321" },
         { x: 455, y: 58, icon: "shield", color: "green", html: "<strong>Policy #P12345</strong>Life Protect Plus<br>Owner" },
         { x: 718, y: 86, icon: "person", color: "green", html: "<strong>Acme Solutions Ltd.</strong>Director<br>Reg. # 201234567" },
-        { x: 92, y: 350, icon: "card", html: "<strong>Account #A7890</strong>Joint Signatory<br>High Activity" },
-        { x: 752, y: 338, icon: "home", color: "green", html: "<strong>123 Ocean View Dr.</strong>Shared Address<br>7 Linked Entities" },
-        { x: 92, y: 522, icon: "phone", color: "green", html: "<strong>(876) 555-1234</strong>Shared Phone<br>5 Linked Entities" },
-        { x: 718, y: 522, icon: "bank", html: "<strong>Bank Account<br>XXXX-XXX-5678</strong>High Inflow / Outflow" },
-        { x: 455, y: 600, icon: "shield", html: "<strong>Policy #P98765</strong>Critical Illness Care<br>Beneficiary" }
+        { x: 82, y: 340, icon: "card", html: "<strong>Account #A7890</strong>Joint Signatory<br>High Activity" },
+        { x: 770, y: 332, icon: "home", color: "green", html: "<strong>123 Ocean View Dr.</strong>Shared Address<br>7 Linked Entities" },
+        { x: 70, y: 570, icon: "phone", color: "green", html: "<strong>(876) 555-1234</strong>Shared Phone<br>5 Linked Entities" },
+        { x: 746, y: 566, icon: "bank", html: "<strong>Bank Account<br>XXXX-XXX-5678</strong>High Inflow / Outflow" },
+        { x: 455, y: 618, icon: "shield", html: "<strong>Policy #P98765</strong>Critical Illness Care<br>Beneficiary" }
       ];
       return `
         <div class="pm-network">
-          <svg class="pm-network-lines" viewBox="0 0 1040 930" fill="none" aria-hidden="true">
-            <path d="M520 428 205 141M520 428 610 117M520 428 873 145M520 428 247 409M520 428 907 397M520 428 247 581M520 428 873 581M520 428 610 659" stroke="#00B3EF" stroke-width="5"/>
-            <path d="M205 141 247 409 247 581 610 659 873 581 907 397 873 145 610 117 205 141Z" stroke="#9abce7" stroke-width="4" stroke-dasharray="8 14"/>
-          </svg>
-          <div class="pm-network-center">${pmSvg("person")}<div style="position:absolute;top:230px;width:340px;text-align:center;color:#00496C;font-size:26px;font-weight:900">John Doe<br><span style="font-size:22px;font-weight:650">Client ID: 123456</span></div></div>
-          ${labels.map((label) => `
-            <div class="pm-network-label" style="left:${label.x}px;top:${label.y}px">
-              <div class="pm-node ${label.color || ""}">${pmSvg(label.icon)}</div>
-              ${label.html}
+          <div class="pm-network-inner">
+            <svg class="pm-network-lines" viewBox="0 0 1040 930" fill="none" aria-hidden="true">
+              <path d="M520 428 205 141M520 428 610 117M520 428 873 145M520 428 247 409M520 428 907 397M520 428 247 581M520 428 873 581M520 428 610 659" stroke="#00B3EF" stroke-width="5"/>
+              <path d="M205 141 247 409 247 581 610 659 873 581 907 397 873 145 610 117 205 141Z" stroke="#9abce7" stroke-width="4" stroke-dasharray="8 14"/>
+            </svg>
+            <div class="pm-network-center">${pmSvg("person")}<div style="position:absolute;top:230px;width:340px;text-align:center;color:#00496C;font-size:26px;font-weight:900">John Doe<br><span style="font-size:22px;font-weight:650">Client ID: 123456</span></div></div>
+            ${labels.map((label) => `
+              <div class="pm-network-label" style="left:${label.x}px;top:${label.y}px">
+                <div class="pm-node ${label.color || ""}">${pmSvg(label.icon)}</div>
+                ${label.html}
+              </div>
+            `).join("")}
+            <div style="position:absolute;left:70px;bottom:4px;right:70px;display:flex;justify-content:center;align-items:center;gap:22px;color:#00496C;font-size:16px;font-weight:750">
+              <span>Strong Relationship</span><span>--- Medium Relationship</span><span>...... Weak Relationship</span>
+              <span>${pmIcon("person")} Person</span><span>${pmIcon("shield")} Policy</span><span>${pmIcon("card")} Account</span><span>${pmIcon("home")} Location</span><span>${pmIcon("phone")} Contact</span><span>${pmIcon("globe")} Organization</span>
             </div>
-          `).join("")}
-          <div style="position:absolute;left:70px;bottom:6px;right:70px;display:flex;justify-content:center;align-items:center;gap:22px;color:#00496C;font-size:16px;font-weight:750">
-            <span>Strong Relationship</span><span>--- Medium Relationship</span><span>...... Weak Relationship</span>
-            <span>${pmIcon("person")} Person</span><span>${pmIcon("shield")} Policy</span><span>${pmIcon("card")} Account</span><span>${pmIcon("home")} Location</span><span>${pmIcon("phone")} Contact</span><span>${pmIcon("globe")} Organization</span>
           </div>
         </div>
       `;
