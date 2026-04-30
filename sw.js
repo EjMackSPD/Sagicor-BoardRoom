@@ -1,8 +1,8 @@
-const APP_CACHE = "sagicor-app-v4";
+const APP_CACHE = "sagicor-app-v5";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/sagicor-logo.svg"
+  "/sagicor-logo-stacked.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,7 +30,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(networkFirst(event.request));
   }
 
-  if (url.origin === self.location.origin && url.pathname === "/sagicor-logo.svg") {
+  if (url.origin === self.location.origin && url.pathname === "/sagicor-logo-stacked.png") {
     event.respondWith(cacheFirst(event.request));
   }
 });

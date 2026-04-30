@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 206" role="img" aria-labelledby="title">
   <title id="title">Sagicor</title>
   <g transform="translate(84 0)">
-    <path d="M14 8c39 8 78 24 111 63-42-2-80-20-111-63z" fill="#79bc5a"/>
-    <path d="M17 43c38 4 73 21 101 58-39-1-73-17-101-58z" fill="#21b3e8"/>
-    <path d="M91 1c29 35 43 74 30 119-27-34-40-74-30-119z" fill="#79bc5a"/>
+    <path d="M14 8c39 8 78 24 111 63-42-2-80-20-111-63z" fill="#82C341"/>
+    <path d="M17 43c38 4 73 21 101 58-39-1-73-17-101-58z" fill="#00B3EF"/>
+    <path d="M91 1c29 35 43 74 30 119-27-34-40-74-30-119z" fill="#82C341"/>
   </g>
-  <text x="0" y="185" fill="#21b3e8" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="400">Sagicor</text>
+  <text x="0" y="185" fill="#00B3EF" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="400">Sagicor</text>
 </svg>
