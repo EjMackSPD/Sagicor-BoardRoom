@@ -2772,6 +2772,78 @@
       object-position: center;
     }
 
+    .pm-graphic-pipe {
+      overflow: hidden;
+    }
+
+    .pm-tile-graphic {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 390px;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .pm-pre-authorization .pm-main.cols-5 .pm-panel {
+      grid-template-rows: auto auto minmax(0, 1fr);
+      gap: 24px;
+      padding-bottom: 34px;
+    }
+
+    .pm-pre-authorization .pm-panel h3 {
+      font-size: 42px;
+      line-height: 1.08;
+    }
+
+    .pm-pre-authorization .pm-panel-body {
+      font-size: 35px;
+      line-height: 1.22;
+      font-weight: 760;
+    }
+
+    .pm-pre-authorization .pm-panel > div:last-child,
+    .pm-pre-authorization .pm-panel-visual-heroIcon,
+    .pm-pre-authorization .pm-panel-visual-aiHub {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      align-content: end;
+      align-items: end;
+    }
+
+    .pm-pre-authorization .pm-graphic-pipe {
+      height: 100%;
+      min-height: 0;
+      align-self: stretch;
+      align-content: end;
+      align-items: end;
+      justify-items: center;
+      overflow: visible;
+      padding: 8px 8px 12px;
+    }
+
+    .pm-pre-authorization .pm-tile-graphic {
+      max-width: 88%;
+      max-height: 345px;
+    }
+
+    .pm-pre-authorization .pm-panel:nth-child(2) .pm-tile-graphic {
+      max-width: 92%;
+      max-height: 325px;
+    }
+
+    .pm-pre-authorization .pm-panel:nth-child(3) .pm-tile-graphic {
+      max-height: 355px;
+    }
+
+    .pm-pre-authorization .pm-panel:nth-child(4) .pm-tile-graphic,
+    .pm-pre-authorization .pm-panel:nth-child(5) .pm-tile-graphic {
+      max-width: 92%;
+      max-height: 335px;
+    }
+
     .pm-knows .pm-panel:nth-child(2) .pm-callout,
     .pm-knows .pm-panel:nth-child(4) .pm-callout {
       align-self: end;
@@ -4601,11 +4673,11 @@
         ],
         panelsClass: "cols-5",
         steps: [
-          { n: 1, title: "Client / Provider Request", body: "Pre-authorization request and supporting documents are received. Many arrive as unstructured forms, scans, or PDFs.", visual: "heroIcon", icon: "form-upload" },
-          { n: 2, title: "AI Intake &amp; Extraction", body: "AI extracts key details from the request, including patient, provider, treatment, and supporting information.", visual: "aiHub", icon: "ai" },
-          { n: 3, title: "Medical Interpretation", body: "AI helps organize the case, interpret medical terms, and prepare the file for faster assessment.", visual: "heroIcon", icon: "medical" },
-          { n: 4, title: "Review &amp; Decision", body: "Reviewer validates the case, confirms the recommendation, and finalizes the decision.", visual: "heroIcon", icon: "review" },
-          { n: 5, title: "Response &amp; Tracking", body: "Decision letter is generated and returned to the provider. Status is tracked for faster follow-up and reporting.", visual: "heroIcon", icon: "envelope-chart" }
+          { n: 1, title: "Client / Provider Request", body: "Pre-authorization request and supporting documents are received. Many arrive as unstructured forms, scans, or PDFs.", visual: "heroIcon", icon: "form-upload", graphic: "placemats/preauth-tile-1.png" },
+          { n: 2, title: "AI Intake &amp; Extraction", body: "AI extracts key details from the request, including patient, provider, treatment, and supporting information.", visual: "aiHub", icon: "ai", graphic: "placemats/preauth-tile-2.png" },
+          { n: 3, title: "Medical Interpretation", body: "AI helps organize the case, interpret medical terms, and prepare the file for faster assessment.", visual: "heroIcon", icon: "medical", graphic: "placemats/preauth-tile-3.png" },
+          { n: 4, title: "Review &amp; Decision", body: "Reviewer validates the case, confirms the recommendation, and finalizes the decision.", visual: "heroIcon", icon: "review", graphic: "placemats/preauth-tile-4.png" },
+          { n: 5, title: "Response &amp; Tracking", body: "Decision letter is generated and returned to the provider. Status is tracked for faster follow-up and reporting.", visual: "heroIcon", icon: "envelope-chart", graphic: "placemats/preauth-tile-5.png" }
         ],
         bottom: {
           leftTitle: "Key Outcomes",
@@ -4951,6 +5023,13 @@
     }
 
     function renderHeroIcon(panel) {
+      if (panel.graphic) {
+        return `
+          <div class="pm-process-pipe pm-graphic-pipe">
+            <img class="pm-tile-graphic" src="${panel.graphic}" alt="${panel.title} icon">
+          </div>
+        `;
+      }
       return `
         <div class="pm-process-pipe">
           <span class="pm-icon-bubble pm-icon" style="width:260px;height:260px;border-radius:26px;background:#fff;">${pmSvg(panel.icon || "document")}</span>
@@ -4959,6 +5038,13 @@
     }
 
     function renderAiHub(panel) {
+      if (panel.graphic) {
+        return `
+          <div class="pm-process-pipe pm-graphic-pipe">
+            <img class="pm-tile-graphic" src="${panel.graphic}" alt="${panel.title} icon">
+          </div>
+        `;
+      }
       return `
         <div class="pm-process-pipe">
           <div class="pm-ai-orb" style="width:230px;height:230px;box-shadow:0 0 0 24px rgba(98,187,70,.13)">
