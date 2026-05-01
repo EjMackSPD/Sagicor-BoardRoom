@@ -813,19 +813,17 @@
       position: fixed;
       top: calc(var(--dashboard-margin) + 2px);
       left: var(--dashboard-margin);
-      width: 66px;
-      height: 58px;
-      border: 1px solid rgba(5, 78, 160, 0.24);
+      width: 62px;
+      height: 62px;
+      border: 1px solid rgba(130, 195, 65, 0.36);
       border-left: 0;
-      border-radius: 0 8px 8px 0;
-      clip-path: polygon(0 5px, 100% 0, 100% 100%, 0 calc(100% - 5px));
+      border-radius: 0 10px 10px 0;
+      clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px));
       color: #ffffff;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 34%),
-        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+      background: linear-gradient(135deg, #00B3EF 0%, #82C341 100%);
       box-shadow:
         inset -8px 0 0 rgba(0, 73, 108, 0.16),
-        0 7px 12px rgba(0, 73, 108, 0.14);
+        0 10px 18px rgba(0, 73, 108, 0.16);
       backdrop-filter: none;
       transform-origin: left center;
     }
@@ -853,9 +851,7 @@
 
     #placematBackButton:hover,
     #placematBackButton:focus-visible {
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 34%),
-        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+      background: linear-gradient(135deg, #00496C 0%, #82C341 100%);
       filter: saturate(1.08) brightness(1.03);
       transform: translateX(-2px);
     }
@@ -944,20 +940,18 @@
     }
 
     .placemat-nav-button {
-      width: 48px;
-      height: 64px;
+      width: 58px;
+      height: 58px;
       min-height: 0;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(5, 78, 160, 0.24);
+      border: 1px solid rgba(130, 195, 65, 0.36);
       padding: 0;
       color: #ffffff;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 34%),
-        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+      background: linear-gradient(135deg, #00B3EF 0%, #82C341 100%);
       box-shadow:
         inset -8px 0 0 rgba(0, 73, 108, 0.16),
-        0 7px 12px rgba(0, 73, 108, 0.14);
+        0 10px 18px rgba(0, 73, 108, 0.16);
       cursor: pointer;
       pointer-events: auto;
       transition: transform 140ms ease, filter 140ms ease;
@@ -965,15 +959,15 @@
 
     .placemat-nav-button.previous {
       border-left: 0;
-      border-radius: 0 7px 7px 0;
-      clip-path: polygon(0 5px, 100% 0, 100% 100%, 0 calc(100% - 5px));
+      border-radius: 0 10px 10px 0;
+      clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px));
       transform-origin: left center;
     }
 
     .placemat-nav-button.next {
       border-right: 0;
-      border-radius: 7px 0 0 7px;
-      clip-path: polygon(0 0, 100% 5px, 100% calc(100% - 5px), 0 100%);
+      border-radius: 10px 0 0 10px;
+      clip-path: polygon(0 0, 100% 4px, 100% calc(100% - 4px), 0 100%);
       transform-origin: right center;
     }
 
@@ -1241,7 +1235,7 @@
     .pm-metric h3 {
       margin: 0 0 8px;
       color: #00B3EF;
-      font-size: 28px;
+      font-size: 50px;
       line-height: 1.08;
       font-weight: 900;
     }
@@ -2222,7 +2216,7 @@
     }
 
     .pm-standard .pm-main.cols-5 .pm-panel h3 {
-      font-size: 34px;
+      font-size: 54px;
     }
 
     .pm-standard .pm-main.cols-5 .pm-panel-subtitle {
@@ -2230,8 +2224,8 @@
     }
 
     .pm-standard .pm-main.cols-5 .pm-panel-body {
-      font-size: 25px;
-      line-height: 1.22;
+      font-size: 46px;
+      line-height: 1.5;
     }
 
     .pm-standard .pm-main.cols-5 .pm-list {
@@ -2359,6 +2353,47 @@
       font-size: 35px;
       line-height: 1.2;
       font-weight: 750;
+    }
+
+    .pm-client-web-disbursement .pm-panel > div:last-child,
+    .pm-client-web-disbursement .pm-panel-visual-heroIcon,
+    .pm-client-web-disbursement .pm-panel-visual-aiHub {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      align-content: end;
+      align-items: end;
+    }
+
+    .pm-client-web-disbursement .pm-graphic-pipe {
+      height: 100%;
+      min-height: 0;
+      align-self: stretch;
+      align-content: end;
+      align-items: end;
+      justify-items: center;
+      overflow: visible;
+      padding: 0 8px 18px;
+    }
+
+    .pm-client-web-disbursement .pm-tile-graphic {
+      max-width: 92%;
+      max-height: 300px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-tile-graphic {
+      max-width: 98%;
+      max-height: 280px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(3) .pm-tile-graphic {
+      max-width: 88%;
+      max-height: 320px;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(4) .pm-tile-graphic {
+      max-width: 96%;
+      max-height: 250px;
     }
 
     .pm-client-web-disbursement .pm-process-pipe {
@@ -2531,7 +2566,7 @@
     .pm-layout-cols-5 .pm-bottom .pm-check-list li {
       grid-template-columns: 28px minmax(0, 1fr);
       gap: 14px;
-      font-size: 22px;
+      font-size: 30px;
       line-height: 1.12;
     }
 
@@ -2786,21 +2821,27 @@
       object-position: center;
     }
 
+    .pm-pre-authorization .pm-main.cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 38px;
+      align-items: stretch;
+    }
+
     .pm-pre-authorization .pm-main.cols-5 .pm-panel {
       grid-template-rows: auto auto minmax(0, 1fr);
-      gap: 24px;
-      padding-bottom: 34px;
+      gap: 26px;
+      padding: 28px 28px 34px;
     }
 
     .pm-pre-authorization .pm-panel h3 {
-      font-size: 42px;
-      line-height: 1.08;
+      font-size: 54px;
+      line-height: 1.04;
     }
 
     .pm-pre-authorization .pm-panel-body {
-      font-size: 35px;
-      line-height: 1.22;
-      font-weight: 760;
+      font-size: 48px;
+      line-height: 1.14;
+      font-weight: 780;
     }
 
     .pm-pre-authorization .pm-panel > div:last-child,
@@ -4641,10 +4682,10 @@
         ],
         panelsClass: "cols-5",
         steps: [
-          { n: 1, title: "Client Web Request", body: "Client submits a policy disbursement request; policy details, banking details, and request captured in P360.", visual: "heroIcon", icon: "laptop" },
-          { n: 2, title: "AI OCR + RPA Extraction", body: "Bot opens the work packet in P360 and extracts policy, owner, amount, and bank details; reduces manual re-keying.", visual: "aiHub", icon: "robot" },
-          { n: 3, title: "Validation In CAPSIL", body: "Automated checks validate max cashout, policy details, bank match, valid ID, paid-to-date status, duplicates, and flag exceptions.", visual: "heroIcon", icon: "clipboard-check" },
-          { n: 4, title: "EFT Processing &amp; Forward", body: "Eligible requests are processed in CAPSIL; EFT reference captured; P360 notes updated; output report retained.", visual: "heroIcon", icon: "bank" },
+          { n: 1, title: "Client Web Request", body: "Client submits a policy disbursement request; policy details, banking details, and request captured in P360.", visual: "heroIcon", icon: "laptop", graphic: "placemats/client-web-tile-1.png" },
+          { n: 2, title: "AI OCR + RPA Extraction", body: "Bot opens the work packet in P360 and extracts policy, owner, amount, and bank details; reduces manual re-keying.", visual: "aiHub", icon: "robot", graphic: "placemats/client-web-tile-2.png" },
+          { n: 3, title: "Validation In CAPSIL", body: "Automated checks validate max cashout, policy details, bank match, valid ID, paid-to-date status, duplicates, and flag exceptions.", visual: "heroIcon", icon: "clipboard-check", graphic: "placemats/client-web-tile-3.png" },
+          { n: 4, title: "EFT Processing &amp; Forward", body: "Eligible requests are processed in CAPSIL; EFT reference captured; P360 notes updated; output report retained.", visual: "heroIcon", icon: "bank", graphic: "placemats/client-web-tile-4.png" },
           { n: 5, title: "Results &amp; Monitoring", body: "First iteration live.", visual: "result", percent: "30%", percentText: "throughput<br>uplift today", target: "TARGET ~60%<br>next release", note: "Backlog can be reduced overnight." }
         ],
         bottom: {
