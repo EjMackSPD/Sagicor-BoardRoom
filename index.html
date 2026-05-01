@@ -944,6 +944,11 @@
       height: 85px;
     }
 
+    .pilot-video-button .video-button-art {
+      width: 28px;
+      height: 28px;
+    }
+
     .placemat-nav {
       position: absolute;
       inset: 0;
@@ -2887,6 +2892,41 @@
       object-position: center bottom;
     }
 
+    .pm-eapps .pm-panel:nth-child(3) .pm-before-after-graphic {
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      padding: 16px 0 8px;
+    }
+
+    .pm-eapps .pm-panel:nth-child(3) .pm-before-after-graphic img {
+      width: auto;
+      height: auto;
+      max-width: 92%;
+      max-height: 150px;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .pm-eapps .pm-panel:nth-child(5) .pm-impact-graphic {
+      display: grid;
+      justify-items: center;
+      align-items: end;
+      min-height: 0;
+      padding: 8px 0 12px;
+    }
+
+    .pm-eapps .pm-panel:nth-child(5) .pm-impact-graphic img {
+      width: auto;
+      height: auto;
+      max-width: 92%;
+      max-height: 190px;
+      display: block;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
     .pm-pre-authorization .pm-main.cols-5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 38px;
@@ -4634,6 +4674,7 @@
             title: "Guided Application Journey",
             subtitle: "Before and after",
             visual: "beforeAfter",
+            graphic: "placemats/eapps-tile-3-between.png",
             before: ["Static forms", "Errors caught later", "Manual corrections", "Wait on vendor delivery"],
             after: ["Guided digital journey", "Real-time validation", "Complete, clean submissions", "Faster iteration and refinement"],
             callout: { icon: "star", text: "Example: A Term product flow can be generated quickly, then reviewed and refined from a working starting point.", blue: true }
@@ -4651,6 +4692,7 @@
             title: "Business Impact",
             subtitle: "Better experience. More control. Lower risk.",
             visual: "impact",
+            graphic: "placemats/eapps-tile-5-provided.png",
             items: ["Better advisor and client experience", "Faster application turnaround", "Lower error rates", "Less vendor dependency", "Lower vendor concentration risk", "Potential cost avoidance", "Scalable digital platform", "Better reuse across products"]
           }
         ],
@@ -4712,7 +4754,7 @@
             title: "Clean Handoff<br>To Operations",
             body: "Requests route more clearly into the back office, reducing not-in-good-order submissions and manual rework.",
             visual: "process",
-            graphic: "placemats/eapps-tile-4.png",
+            graphic: "placemats/eapps-tile-4-provided.png",
             items: [["database", "Structured intake"], ["ban", "Reduced INGO"], ["refresh", "Less rework"], ["speed", "Faster processing"]],
             callout: { icon: "person", text: "Human oversight stays in place for edge cases and quality.", blue: true }
           },
@@ -5126,6 +5168,7 @@
             <ul>${(panel.after || []).map((item) => `<li>${item}</li>`).join("")}</ul>
           </div>
         </div>
+        ${panel.graphic ? `<div class="pm-before-after-graphic"><img src="${panel.graphic}" alt="${panel.title} process"></div>` : ""}
         ${renderCallout(panel.callout)}
       `;
     }
@@ -5182,10 +5225,14 @@
     }
 
     function renderImpact(panel) {
-      return `
+      const visual = panel.graphic
+        ? `<div class="pm-impact-graphic"><img src="${panel.graphic}" alt="${panel.title} graphic"></div>`
+        : `
         <div class="pm-impact-chart" aria-hidden="true">
           <div class="pm-bars"><span></span><span></span><span></span><span></span><span></span></div>
-        </div>
+        </div>`;
+      return `
+        ${visual}
         ${renderCheckList(panel.items || [])}
       `;
     }
