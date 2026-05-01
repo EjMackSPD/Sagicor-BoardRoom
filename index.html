@@ -783,8 +783,8 @@
     }
 
     .placemat-actions {
-      position: fixed;
-      inset: var(--dashboard-margin) var(--dashboard-margin) auto var(--dashboard-margin);
+      position: absolute;
+      inset: 0;
       z-index: 4;
       display: block;
       pointer-events: none;
@@ -810,9 +810,9 @@
     }
 
     #placematBackButton {
-      position: fixed;
-      top: calc(var(--dashboard-margin) + 2px);
-      left: var(--dashboard-margin);
+      position: absolute;
+      top: 18px;
+      left: -18px;
       width: 62px;
       height: 62px;
       border: 1px solid rgba(130, 195, 65, 0.36);
@@ -829,9 +829,9 @@
     }
 
     .placemat-action.primary {
-      position: fixed;
-      top: calc(var(--dashboard-margin) + 48px);
-      right: calc(var(--dashboard-margin) + 430px);
+      position: absolute;
+      top: 48px;
+      right: 430px;
       width: 92px;
       height: 92px;
       border-color: rgba(130, 195, 65, 0.44);
@@ -929,17 +929,15 @@
     }
 
     .placemat-nav {
-      position: fixed;
+      position: absolute;
       inset: 0;
       z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 calc(var(--dashboard-margin) + 46px);
       pointer-events: none;
     }
 
     .placemat-nav-button {
+      position: absolute;
+      top: 50%;
       width: 58px;
       height: 58px;
       min-height: 0;
@@ -958,17 +956,21 @@
     }
 
     .placemat-nav-button.previous {
+      left: -18px;
       border-left: 0;
       border-radius: 0 10px 10px 0;
       clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px));
       transform-origin: left center;
+      transform: translateY(-50%);
     }
 
     .placemat-nav-button.next {
+      right: -18px;
       border-right: 0;
       border-radius: 10px 0 0 10px;
       clip-path: polygon(0 0, 100% 4px, 100% calc(100% - 4px), 0 100%);
       transform-origin: right center;
+      transform: translateY(-50%);
     }
 
     .placemat-nav-button:hover,
@@ -980,12 +982,12 @@
 
     .placemat-nav-button.previous:hover,
     .placemat-nav-button.previous:focus-visible {
-      transform: translateX(-2px);
+      transform: translate(-2px, -50%);
     }
 
     .placemat-nav-button.next:hover,
     .placemat-nav-button.next:focus-visible {
-      transform: translateX(2px);
+      transform: translate(2px, -50%);
     }
 
     .placemat-nav-icon {
@@ -1359,7 +1361,7 @@
     .pm-panel-subtitle {
       margin: 0;
       color: #00496C;
-      font-size: 24px;
+      font-size: 30px;
       line-height: 1.24;
       font-weight: 800;
       text-align: center;
@@ -1390,7 +1392,7 @@
       gap: 22px;
       align-items: center;
       color: #00496C;
-      font-size: 27px;
+      font-size: 36px;
       line-height: 1.18;
       font-weight: 750;
     }
@@ -1404,12 +1406,6 @@
 
     .pm-check-list {
       gap: 17px;
-    }
-
-    .pm-check-list li {
-      grid-template-columns: 34px minmax(0, 1fr);
-      gap: 18px;
-      font-size: 25px;
     }
 
     .pm-check-list li::before {
@@ -1447,7 +1443,7 @@
       border-radius: 20px;
       color: #00496C;
       background: #f2fbef;
-      font-size: 22px;
+      font-size: 32px;
       line-height: 1.24;
       font-weight: 750;
     }
@@ -2220,7 +2216,7 @@
     }
 
     .pm-standard .pm-main.cols-5 .pm-panel-subtitle {
-      font-size: 22px;
+      font-size: 30px;
     }
 
     .pm-standard .pm-main.cols-5 .pm-panel-body {
@@ -2283,10 +2279,10 @@
     }
 
     .pm-standard .pm-main.cols-5 .pm-callout {
-      grid-template-columns: 58px minmax(0, 1fr);
-      gap: 16px;
-      padding: 16px 20px;
-      font-size: 19px;
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: 22px;
+      padding: 22px 30px;
+      font-size: 32px;
     }
 
     .pm-standard .pm-main.cols-5 .pm-before-after h4 {
@@ -2372,28 +2368,42 @@
       align-content: end;
       align-items: end;
       justify-items: center;
-      overflow: visible;
-      padding: 0 8px 18px;
+      overflow: hidden;
+      padding: 0 0 8px;
     }
 
     .pm-client-web-disbursement .pm-tile-graphic {
-      max-width: 92%;
-      max-height: 300px;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 318px;
+      display: block;
+      object-fit: contain;
+      object-position: center bottom;
+      image-rendering: auto;
+    }
+
+    .pm-client-web-disbursement .pm-panel:nth-child(1) .pm-tile-graphic {
+      max-width: 94%;
+      max-height: 292px;
     }
 
     .pm-client-web-disbursement .pm-panel:nth-child(2) .pm-tile-graphic {
-      max-width: 98%;
-      max-height: 280px;
+      max-width: 100%;
+      max-height: 258px;
+      clip-path: inset(0 5px 6px 0);
     }
 
     .pm-client-web-disbursement .pm-panel:nth-child(3) .pm-tile-graphic {
-      max-width: 88%;
-      max-height: 320px;
+      max-width: 90%;
+      max-height: 312px;
+      clip-path: inset(0 0 6px 0);
     }
 
     .pm-client-web-disbursement .pm-panel:nth-child(4) .pm-tile-graphic {
-      max-width: 96%;
-      max-height: 250px;
+      max-width: 100%;
+      max-height: 224px;
+      clip-path: inset(0 0 0 4px);
     }
 
     .pm-client-web-disbursement .pm-process-pipe {
@@ -2790,6 +2800,32 @@
       align-self: center;
     }
 
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(4) {
+      grid-template-rows: auto auto minmax(0, 1fr);
+      align-content: stretch;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(4) .pm-panel-visual-iconList {
+      height: 760px;
+      min-height: 0;
+      display: grid;
+      align-self: start;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(4) .pm-list {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      align-items: center;
+      gap: 0;
+      padding: 10px 0 58px;
+    }
+
+    .pm-group .pm-main.cols-4-even .pm-panel:nth-child(4) .pm-list li {
+      align-self: center;
+    }
+
     .pm-group .pm-main.cols-4-even .pm-panel:nth-child(2) .pm-match-engine-graphic img {
       width: auto;
       height: 760px;
@@ -2819,6 +2855,20 @@
       display: block;
       object-fit: contain;
       object-position: center;
+    }
+
+    .pm-eapps .pm-panel:nth-child(4) .pm-process-pipe.pm-graphic-pipe {
+      min-height: 0;
+      align-self: stretch;
+      align-content: end;
+      padding: 10px 0 8px;
+      overflow: hidden;
+    }
+
+    .pm-eapps .pm-panel:nth-child(4) .pm-tile-graphic {
+      max-width: 100%;
+      max-height: 238px;
+      object-position: center bottom;
     }
 
     .pm-pre-authorization .pm-main.cols-5 {
@@ -4646,6 +4696,7 @@
             title: "Clean Handoff<br>To Operations",
             body: "Requests route more clearly into the back office, reducing not-in-good-order submissions and manual rework.",
             visual: "process",
+            graphic: "placemats/eapps-tile-4.png",
             items: [["database", "Structured intake"], ["ban", "Reduced INGO"], ["refresh", "Less rework"], ["speed", "Faster processing"]],
             callout: { icon: "person", text: "Human oversight stays in place for edge cases and quality.", blue: true }
           },
@@ -5096,12 +5147,20 @@
     }
 
     function renderProcess(panel) {
-      return `
-        ${renderIconList(panel.items || [])}
+      const processVisual = panel.graphic
+        ? `
+        <div class="pm-process-pipe pm-graphic-pipe">
+          <img class="pm-tile-graphic" src="${panel.graphic}" alt="${panel.title} graphic">
+          ${panel.caption ? `<p class="pm-panel-subtitle">${panel.caption}</p>` : ""}
+        </div>`
+        : `
         <div class="pm-process-pipe">
           <div class="pm-pipe" aria-hidden="true"></div>
           ${panel.caption ? `<p class="pm-panel-subtitle">${panel.caption}</p>` : ""}
-        </div>
+        </div>`;
+      return `
+        ${renderIconList(panel.items || [])}
+        ${processVisual}
         ${renderCallout(panel.callout)}
       `;
     }
