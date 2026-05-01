@@ -920,12 +920,28 @@
     }
 
     .placemat-play-icon {
-      width: 0;
-      height: 0;
-      margin-left: 8px;
-      border-top: 22px solid transparent;
-      border-bottom: 22px solid transparent;
-      border-left: 34px solid currentColor;
+      width: 42px;
+      height: 42px;
+      margin-left: 0;
+    }
+
+    .placemat-action.primary img,
+    .pilot-video-button img {
+      width: 85px;
+      height: 85px;
+      display: block;
+    }
+
+    .video-button-art {
+      width: 85px;
+      height: 85px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .placemat-action.primary .video-button-art {
+      width: 85px;
+      height: 85px;
     }
 
     .placemat-nav {
@@ -3997,7 +4013,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="1" aria-label="Play Sagicor KNOWS video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4025,7 +4041,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="0" aria-label="Play Relationship Network video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4066,7 +4082,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="5" aria-label="Play Client Web Disbursement Automation video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4093,7 +4109,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="2" aria-label="Play Group Health Deposit Identification video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4119,7 +4135,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="6" aria-label="Play Pre-Authorization Automation video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4159,7 +4175,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="3" aria-label="Play ivari eApps Platform video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4186,7 +4202,7 @@
                       </svg>
                     </span>
                     <button class="pilot-video-button" type="button" data-video-index="4" aria-label="Play ivari Intelligent eForms Platform video">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+                      <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
                     </button>
                   </span>
                   <span class="pilot-copy">
@@ -4259,7 +4275,7 @@
           <span class="placemat-home-icon" aria-hidden="true"></span>
         </button>
         <button class="placemat-action primary" type="button" id="placematVideoButton" aria-label="Play video">
-          <span class="placemat-play-icon" aria-hidden="true"></span>
+          <img class="video-button-art placemat-play-icon" src="assets/video-icon-833-thumb.png" alt="" aria-hidden="true">
         </button>
       </div>
       <div class="placemat-nav" aria-label="Placemat navigation">
