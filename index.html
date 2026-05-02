@@ -33,6 +33,18 @@
       --placemat-scale: 1;
       --placemat-image-inset: 18px;
       --placemat-nav-reserve: 72px;
+      --placemat-logo-top: 54px;
+      --placemat-logo-right: 112px;
+      --placemat-logo-width: 300px;
+      --placemat-logo-image-width: 292px;
+      --placemat-logo-image-height: 236px;
+      --placemat-logo-gap: 92px;
+      --placemat-video-button-size: 190px;
+      --placemat-video-icon-size: 162px;
+      --placemat-video-button-top-frame: 54px;
+      --placemat-video-button-right-frame: 424px;
+      --placemat-video-button-size-frame: 240px;
+      --placemat-video-icon-size-frame: 208px;
     }
 
     * {
@@ -338,14 +350,14 @@
       height: var(--pilot-ribbon-height);
       border: 1px solid rgba(5, 78, 160, 0.24);
       border-right: 0;
-      border-radius: 7px 0 0 7px;
+      border-radius: 3px 0 0 3px;
       background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 34%),
         linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
       box-shadow:
         inset -8px 0 0 rgba(0, 73, 108, 0.16),
         0 7px 12px rgba(0, 73, 108, 0.14);
-      clip-path: polygon(0 0, 100% 5px, 100% calc(100% - 5px), 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       pointer-events: none;
       transform: translateY(-50%);
       transition: filter 160ms ease, transform 160ms ease;
@@ -529,12 +541,12 @@
       display: grid;
       align-self: center;
       align-content: center;
-      justify-items: center;
+      justify-items: start;
       gap: 4px;
       margin-top: 0;
       padding: 0;
       pointer-events: none;
-      text-align: center;
+      text-align: left;
     }
 
     .pilot-card:not(.green) .pilot-copy {
@@ -544,7 +556,7 @@
     .pilot-card h3 {
       margin: 0;
       color: #00B3EF;
-      font-size: clamp(16px, 1.45vw, 19px);
+      font-size: 25px;
       line-height: 1.04;
       font-weight: 900;
     }
@@ -557,7 +569,7 @@
       min-height: 0;
       margin: 0;
       display: block;
-      text-align: center;
+      text-align: left;
     }
 
     .pilot-copy p,
@@ -566,7 +578,7 @@
       max-width: none;
       margin-left: 0;
       transform: none;
-      text-align: center;
+      text-align: left;
     }
 
     .pilot-copy p {
@@ -596,10 +608,10 @@
     }
 
     .pilot-card .pilot-copy ul {
-      width: fit-content;
+      width: 100%;
       max-width: 100%;
-      justify-items: center;
-      margin: 0 auto;
+      justify-items: start;
+      margin: 0;
     }
 
     .pilot-card .pilot-copy li {
@@ -784,8 +796,11 @@
 
     .placemat-actions {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       z-index: 4;
+      width: 100%;
+      height: 100%;
       display: block;
       pointer-events: none;
     }
@@ -812,13 +827,13 @@
     #placematBackButton {
       position: absolute;
       top: 18px;
-      left: -18px;
-      width: 62px;
-      height: 62px;
+      left: -50px;
+      width: 58px;
+      height: 58px;
       border: 1px solid rgba(130, 195, 65, 0.36);
       border-left: 0;
-      border-radius: 0 10px 10px 0;
-      clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px));
+      border-radius: 0 3px 3px 0;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       color: #ffffff;
       background: linear-gradient(135deg, #00B3EF 0%, #82C341 100%);
       box-shadow:
@@ -830,10 +845,10 @@
 
     .placemat-action.primary {
       position: absolute;
-      top: 48px;
-      right: 430px;
-      width: 92px;
-      height: 92px;
+      top: var(--placemat-video-button-top-frame);
+      right: var(--placemat-video-button-right-frame);
+      width: var(--placemat-video-button-size-frame);
+      height: var(--placemat-video-button-size-frame);
       border-color: rgba(130, 195, 65, 0.44);
       color: var(--play-color);
       background: linear-gradient(135deg, #00B3EF, #82C341);
@@ -940,8 +955,8 @@
     }
 
     .placemat-action.primary .video-button-art {
-      width: 85px;
-      height: 85px;
+      width: var(--placemat-video-icon-size-frame);
+      height: var(--placemat-video-icon-size-frame);
     }
 
     .pilot-video-button .video-button-art {
@@ -979,8 +994,8 @@
     .placemat-nav-button.previous {
       left: -18px;
       border-left: 0;
-      border-radius: 0 10px 10px 0;
-      clip-path: polygon(0 4px, 100% 0, 100% 100%, 0 calc(100% - 4px));
+      border-radius: 0 3px 3px 0;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       transform-origin: left center;
       transform: translateY(-50%);
     }
@@ -988,8 +1003,8 @@
     .placemat-nav-button.next {
       right: -18px;
       border-right: 0;
-      border-radius: 10px 0 0 10px;
-      clip-path: polygon(0 0, 100% 4px, 100% calc(100% - 4px), 0 100%);
+      border-radius: 3px 0 0 3px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       transform-origin: right center;
       transform: translateY(-50%);
     }
@@ -1105,17 +1120,17 @@
 
     .pm-logo {
       position: absolute;
-      top: 54px;
-      right: 112px;
+      top: var(--placemat-logo-top);
+      right: var(--placemat-logo-right);
       z-index: 1;
       display: grid;
       justify-items: center;
-      width: 300px;
+      width: var(--placemat-logo-width);
       text-align: center;
     }
 
     .pm-logo img {
-      width: 292px;
+      width: var(--placemat-logo-image-width);
       height: auto;
       display: block;
     }
@@ -3637,7 +3652,7 @@
       }
 
       .value-item h2 {
-        font-size: 15px;
+        font-size: 25px;
       }
 
       .value-item p {
@@ -3702,7 +3717,7 @@
       }
 
       .pilot-card h3 {
-        font-size: 16px;
+        font-size: 25px;
       }
 
       .pilot-card p {
@@ -4951,6 +4966,13 @@
       const placematHeight = parseFloat(styles.getPropertyValue("--placemat-height")) || 2160;
       const margin = parseFloat(styles.getPropertyValue("--dashboard-margin")) || 24;
       const navReserve = parseFloat(styles.getPropertyValue("--placemat-nav-reserve")) || 0;
+      const placematLogoTop = parseFloat(styles.getPropertyValue("--placemat-logo-top")) || 54;
+      const placematLogoRight = parseFloat(styles.getPropertyValue("--placemat-logo-right")) || 112;
+      const placematLogoWidth = parseFloat(styles.getPropertyValue("--placemat-logo-width")) || 300;
+      const placematLogoGap = parseFloat(styles.getPropertyValue("--placemat-logo-gap")) || 12;
+      const placematLogoImageHeight = parseFloat(styles.getPropertyValue("--placemat-logo-image-height")) || 236;
+      const placematVideoButtonSize = parseFloat(styles.getPropertyValue("--placemat-video-button-size")) || 240;
+      const placematVideoIconSize = parseFloat(styles.getPropertyValue("--placemat-video-icon-size")) || 208;
       const placematNavReserve = window.innerWidth >= 1100 ? navReserve : 0;
       const availableWidth = Math.max(window.innerWidth - margin * 2, 1);
       const availablePlacematWidth = Math.max(availableWidth - placematNavReserve * 2, 1);
@@ -4960,6 +4982,10 @@
       root.style.setProperty("--placemat-scale", placematScale.toFixed(4));
       root.style.setProperty("--placemat-frame-width", `${placematWidth * placematScale}px`);
       root.style.setProperty("--placemat-frame-height", `${placematHeight * placematScale}px`);
+      root.style.setProperty("--placemat-video-button-top-frame", `${(placematLogoTop + (placematLogoImageHeight - placematVideoButtonSize) / 2) * placematScale}px`);
+      root.style.setProperty("--placemat-video-button-right-frame", `${(placematLogoRight + placematLogoWidth + placematLogoGap) * placematScale}px`);
+      root.style.setProperty("--placemat-video-button-size-frame", `${placematVideoButtonSize * placematScale}px`);
+      root.style.setProperty("--placemat-video-icon-size-frame", `${placematVideoIconSize * placematScale}px`);
 
       if (!dashboardDesktopQuery.matches) {
         root.style.setProperty("--dashboard-scale", "1");
