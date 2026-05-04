@@ -151,38 +151,6 @@
       font-weight: 600;
     }
 
-    .dashboard-mode-nav {
-      width: fit-content;
-      display: inline-flex;
-      gap: 4px;
-      margin-top: 10px;
-      padding: 4px;
-      border: 1px solid #cfe0f4;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 8px 18px rgba(0, 73, 108, 0.08);
-    }
-
-    .dashboard-mode-link {
-      min-height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 12px;
-      border-radius: 5px;
-      color: #00496C;
-      font-size: 12px;
-      line-height: 1;
-      font-weight: 900;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .dashboard-mode-link[aria-current="page"] {
-      color: #ffffff;
-      background: #00B3EF;
-    }
-
     .portfolio-logo-lockup {
       display: grid;
       justify-items: center;
@@ -386,7 +354,7 @@
       border-radius: 3px 0 0 3px;
       background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 34%),
-        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #00496C 72%, #00496C 100%);
+        linear-gradient(90deg, #00B3EF 0%, #00B3EF 72%, #007fbe 72%, #007fbe 100%);
       box-shadow:
         inset -8px 0 0 rgba(0, 73, 108, 0.16),
         0 7px 12px rgba(0, 73, 108, 0.14);
@@ -846,6 +814,11 @@
       display: block;
     }
 
+    .placemat-shell.image-mode-shell .placemat-action.primary {
+      top: calc(var(--placemat-video-button-top-frame) + 20px);
+      right: calc(var(--placemat-video-button-right-frame) + 175px);
+    }
+
     .placemat-actions {
       position: absolute;
       top: 0;
@@ -887,9 +860,10 @@
       border-radius: 0 3px 3px 0;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       color: #ffffff;
-      background: linear-gradient(135deg, #00B3EF 0%, #82C341 100%);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #00B3EF 0%, #009fe0 46%, #82C341 100%);
       box-shadow:
-        inset -8px 0 0 rgba(0, 73, 108, 0.16),
         0 10px 18px rgba(0, 73, 108, 0.16);
       backdrop-filter: none;
       transform-origin: left center;
@@ -903,14 +877,18 @@
       height: var(--placemat-video-button-size-frame);
       border-color: rgba(130, 195, 65, 0.44);
       color: var(--play-color);
-      background: linear-gradient(135deg, #00B3EF, #82C341);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #00B3EF 0%, #009fe0 46%, #82C341 100%);
       box-shadow: 0 14px 34px rgba(0, 73, 108, 0.14);
     }
 
     .placemat-action:hover,
     .placemat-action:focus-visible {
       color: #ffffff;
-      background: #00B3EF;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #0098d7 0%, #0088c1 44%, #74b63a 100%);
       outline: 2px solid rgba(0, 179, 239, 0.24);
       outline-offset: 3px;
       transform: translateY(-1px);
@@ -918,7 +896,9 @@
 
     #placematBackButton:hover,
     #placematBackButton:focus-visible {
-      background: linear-gradient(135deg, #00496C 0%, #82C341 100%);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #007fbe 0%, #006a9d 42%, #74b63a 100%);
       filter: saturate(1.08) brightness(1.03);
       transform: translateX(-2px);
     }
@@ -926,7 +906,9 @@
     .placemat-action.primary:hover,
     .placemat-action.primary:focus-visible {
       color: var(--play-color);
-      background: linear-gradient(135deg, #00496C, #82C341);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #007fbe 0%, #006a9d 42%, #74b63a 100%);
     }
 
     .placemat-back-icon,
@@ -1031,12 +1013,13 @@
       min-height: 0;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(130, 195, 65, 0.36);
+      border: 0;
       padding: 0;
       color: #ffffff;
-      background: linear-gradient(135deg, #00B3EF 0%, #82C341 100%);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, #00B3EF 0%, #009fe0 46%, #82C341 100%);
       box-shadow:
-        inset -8px 0 0 rgba(0, 73, 108, 0.16),
         0 10px 18px rgba(0, 73, 108, 0.16);
       cursor: pointer;
       pointer-events: auto;
@@ -1045,7 +1028,6 @@
 
     .placemat-nav-button.previous {
       left: -18px;
-      border-left: 0;
       border-radius: 0 3px 3px 0;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       transform-origin: left center;
@@ -1054,7 +1036,6 @@
 
     .placemat-nav-button.next {
       right: -18px;
-      border-right: 0;
       border-radius: 3px 0 0 3px;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       transform-origin: right center;
@@ -4039,11 +4020,6 @@
             <h1 class="portfolio-title" id="portfolio-title"><span class="brand-blue">Sagicor</span> AI Pilot Portfolio</h1>
             <p class="portfolio-subtitle">Practical progress. Clear next gates. Reusable patterns for scale.</p>
             <p class="portfolio-intro">Seven pilots are improving knowledge access, process efficiency, and decision support across Sagicor and ivari with human oversight, controls, and a staged path to scale.</p>
-            <nav class="dashboard-mode-nav" aria-label="Dashboard views">
-              <a class="dashboard-mode-link" href="?dashboard=main" data-dashboard-mode-link="main">Dashboard Main</a>
-              <a class="dashboard-mode-link" href="?dashboard=video" data-dashboard-mode-link="video">Dashboard Video</a>
-              <a class="dashboard-mode-link" href="?dashboard=images" data-dashboard-mode-link="images">Dashboard Images</a>
-            </nav>
           </div>
           <div class="portfolio-logo-lockup">
             <img class="brand-logo" src="sagicor-logo-stacked.png" alt="Sagicor">
@@ -4990,6 +4966,7 @@
     const player = document.getElementById("player");
     const placematView = document.getElementById("placematView");
     const placematContent = document.getElementById("placematContent");
+    const placematShell = document.querySelector(".placemat-shell");
     const placematBackButton = document.getElementById("placematBackButton");
     const placematVideoButton = document.getElementById("placematVideoButton");
     const placematPreviousButton = document.getElementById("placematPreviousButton");
@@ -5017,9 +4994,16 @@
     const placematNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
     const hostedVideoBase = "/videos/";
 
+    function dashboardModeFromPath() {
+      const fileName = window.location.pathname.split("/").pop() || "index.html";
+      if (fileName === "dashboard-video.html") return "video";
+      if (fileName === "dashboard-images.html") return "images";
+      return "main";
+    }
+
     function dashboardModeFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      const mode = params.get("dashboard") || "main";
+      const mode = params.get("dashboard") || dashboardModeFromPath();
       return dashboardModes.has(mode) ? mode : "main";
     }
 
@@ -5050,15 +5034,6 @@
       if (updateUrl) {
         history.pushState(null, "", dashboardUrl(dashboardMode));
       }
-      dashboardModeLinks.forEach((link) => {
-        const isCurrent = link.dataset.dashboardModeLink === dashboardMode;
-        if (isCurrent) {
-          link.setAttribute("aria-current", "page");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-        link.setAttribute("href", dashboardUrl(link.dataset.dashboardModeLink || "main"));
-      });
       updateDashboardModeLabels();
     }
 
@@ -5592,6 +5567,7 @@
     function renderHtmlPlacemat(index) {
       const item = placemats[index];
       const page = placematHtmlData[item.slug];
+      placematShell.classList.remove("image-mode-shell");
       if (!page) {
         renderGeneratedPlacemat(index);
         return;
@@ -5602,6 +5578,7 @@
 
     function renderImagePlacemat(index) {
       const item = placemats[index];
+      placematShell.classList.add("image-mode-shell");
       placematContent.className = "placemat-page image-mode";
       placematContent.innerHTML = `
         <div class="placemat-image-stage">
@@ -5620,6 +5597,7 @@
 
     function renderGeneratedPlacemat(index) {
       const item = placemats[index];
+      placematShell.classList.remove("image-mode-shell");
       placematContent.className = "placemat-page";
       const title = item.brandPrefix ? `<span class="brand-blue">${item.brandPrefix}</span> ${item.title}` : item.title;
       const panels = item.panels.map((panel, panelIndex) => `
