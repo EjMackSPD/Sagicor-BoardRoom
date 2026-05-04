@@ -768,6 +768,367 @@
       color: #00496C;
     }
 
+    .simple-interface {
+      display: none;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-board {
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      padding: 22px 28px 18px;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-subtitle {
+      max-width: 1080px;
+      margin-top: 10px;
+      font-size: 30px;
+      line-height: 1.08;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-intro {
+      max-width: 980px;
+      margin-top: 10px;
+      font-size: 19px;
+      line-height: 1.28;
+      font-weight: 700;
+    }
+
+    body[data-dashboard-mode="simple"] .value-row,
+    body[data-dashboard-mode="simple"] .track-grid,
+    body[data-dashboard-mode="simple"] .summary-band {
+      display: none;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-footer {
+      min-height: 62px;
+      justify-content: stretch;
+      gap: 0;
+      padding: 10px 28px;
+      border-radius: 14px;
+      font-size: 22px;
+      line-height: 1.08;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-footer span {
+      flex: 1 1 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      padding: 0 18px;
+      text-align: center;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-footer span:not(:last-child)::after {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-left: 0;
+      transform: translate(50%, -50%);
+      font-size: 22px;
+    }
+
+    body[data-dashboard-mode="simple"] .simple-interface {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      min-height: 0;
+    }
+
+    .simple-summary-row {
+      display: grid;
+      grid-template-columns: 0.96fr 1.08fr 0.96fr;
+      gap: 16px;
+    }
+
+    .simple-summary-card {
+      min-height: 108px;
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 16px 20px;
+      border: 2px solid #cfe0f4;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      box-shadow: 0 10px 24px rgba(0, 73, 108, 0.06);
+    }
+
+    .simple-summary-card.green {
+      border-color: rgba(130, 195, 65, 0.4);
+      background: linear-gradient(180deg, #ffffff 0%, #f5fbef 100%);
+    }
+
+    .simple-summary-icon {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      align-self: start;
+      border-radius: 999px;
+      color: #00B3EF;
+      background: rgba(0, 179, 239, 0.09);
+    }
+
+    .simple-summary-icon svg {
+      width: 42px;
+      height: 42px;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .simple-summary-card.green .simple-summary-icon {
+      color: var(--green-600);
+      background: rgba(130, 195, 65, 0.12);
+    }
+
+    .simple-summary-card > div:last-child {
+      min-height: 74px;
+      display: grid;
+      align-content: center;
+    }
+
+    .simple-summary-card strong {
+      display: block;
+      margin: 0;
+      color: #00B3EF;
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .simple-summary-card.green strong {
+      color: var(--green-600);
+    }
+
+    .simple-summary-card > div:last-child span {
+      display: block;
+      margin-top: 6px;
+      color: #00496C;
+      font-size: 18px;
+      line-height: 1.16;
+      font-weight: 800;
+    }
+
+    .simple-lane-grid {
+      display: grid;
+      grid-template-columns: 0.96fr 1.08fr 0.96fr;
+      gap: 16px;
+      min-height: 0;
+    }
+
+    .simple-lane {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 16px;
+      padding: 18px 18px 20px;
+      border: 2px solid #cfe0f4;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+      box-shadow: 0 16px 34px rgba(0, 73, 108, 0.06);
+    }
+
+    .simple-lane.green {
+      border-color: rgba(130, 195, 65, 0.45);
+      background: linear-gradient(180deg, #ffffff 0%, #f6fbf0 100%);
+    }
+
+    .simple-lane-head {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      min-height: 106px;
+    }
+
+    .simple-lane-icon {
+      width: 84px;
+      height: 84px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #00B3EF;
+      background: rgba(0, 179, 239, 0.09);
+    }
+
+    .simple-lane.green .simple-lane-icon {
+      color: var(--green-600);
+      background: rgba(130, 195, 65, 0.12);
+    }
+
+    .simple-lane-head h2 {
+      margin: 0;
+      color: #00B3EF;
+      font-size: 28px;
+      line-height: 1.02;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .simple-lane.green .simple-lane-head h2 {
+      color: var(--green-600);
+    }
+
+    .simple-lane-head p {
+      margin: 8px 0 0;
+      color: #00496C;
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    .simple-lane-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+      min-height: 66px;
+      align-content: start;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .simple-lane-points li {
+      position: relative;
+      padding-left: 18px;
+      color: #00496C;
+      font-size: 16px;
+      line-height: 1.16;
+      font-weight: 800;
+    }
+
+    .simple-lane-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green-600);
+    }
+
+    .simple-pilot-list {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .simple-pilot-button {
+      width: 100%;
+      min-height: 122px;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) 56px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      border: 2px solid #9eddfa;
+      border-radius: 16px;
+      color: inherit;
+      background: linear-gradient(180deg, #ffffff 0%, #eef9ff 100%);
+      box-shadow: 0 12px 24px rgba(0, 73, 108, 0.07);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .simple-pilot-button:hover,
+    .simple-pilot-button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(0, 179, 239, 0.74);
+      box-shadow: 0 16px 30px rgba(0, 73, 108, 0.1);
+      outline: none;
+    }
+
+    .simple-pilot-button.green {
+      border-color: rgba(130, 195, 65, 0.46);
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbec 100%);
+    }
+
+    .simple-pilot-button.green:hover,
+    .simple-pilot-button.green:focus-visible {
+      border-color: rgba(130, 195, 65, 0.82);
+    }
+
+    .simple-pilot-number {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border: 3px solid #00B3EF;
+      border-radius: 20px;
+      color: #00B3EF;
+      background: linear-gradient(180deg, #ffffff 0%, #eef9ff 100%);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 14px rgba(0, 73, 108, 0.08);
+    }
+
+    .simple-pilot-button.green .simple-pilot-number {
+      border-color: #82C341;
+      color: #82C341;
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbec 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 14px rgba(84, 122, 34, 0.1);
+    }
+
+    .simple-pilot-video {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      justify-self: end;
+      padding: 0;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #00B3EF 0%, #007fbe 100%);
+      box-shadow: 0 8px 16px rgba(0, 73, 108, 0.16);
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    }
+
+    .simple-pilot-button.green .simple-pilot-video {
+      background: linear-gradient(135deg, #82C341 0%, #5da72e 100%);
+    }
+
+    .simple-pilot-video:hover,
+    .simple-pilot-video:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 22px rgba(0, 73, 108, 0.2);
+      filter: saturate(1.04) brightness(1.02);
+      outline: 2px solid rgba(0, 179, 239, 0.24);
+      outline-offset: 2px;
+    }
+
+    .simple-pilot-button.green .simple-pilot-video:hover,
+    .simple-pilot-button.green .simple-pilot-video:focus-visible {
+      outline-color: rgba(130, 195, 65, 0.3);
+    }
+
+    .simple-pilot-video .video-button-art {
+      width: 28px;
+      height: 28px;
+    }
+
+    .simple-pilot-copy strong {
+      display: block;
+      color: #00496C;
+      font-size: 24px;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .simple-pilot-copy span {
+      display: block;
+      margin-top: 8px;
+      color: #00496C;
+      font-size: 17px;
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
     .player-play::before {
       content: "";
       width: 0;
@@ -4079,6 +4440,191 @@
           </div>
         </div>
 
+        <section class="simple-interface" aria-label="Simple interface overview">
+          <div class="simple-summary-row">
+            <div class="simple-summary-card">
+              <span class="simple-summary-icon" aria-hidden="true">
+                <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+                  <path d="M11 38h26M15 33V23h6v10M24 33V17h6v16M33 33V11h6v22" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                  <path d="M12 21c7-1 14-5 20-12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div>
+                <strong>7 pilots</strong>
+                <span>Active work across service, operations, and platform delivery.</span>
+              </div>
+            </div>
+            <div class="simple-summary-card green">
+              <span class="simple-summary-icon" aria-hidden="true">
+                <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+                  <path d="M7 36h34M13 31V21h6v10M23 31V14h6v17M33 31V9h6v22" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                  <path d="M10 17c6 0 12-4 18-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M24 7h6v6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <strong>3 reusable lanes</strong>
+                <span>Knowledge, process automation, and platform acceleration.</span>
+              </div>
+            </div>
+            <div class="simple-summary-card">
+              <span class="simple-summary-icon" aria-hidden="true">
+                <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+                  <path d="M24 6 37 11v9c0 9-5 15.2-13 19-8-3.8-13-10-13-19v-9z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                  <path d="m18 23 4 4 8-10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <strong>Human oversight</strong>
+                <span>Controls stay in place while teams move faster.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="simple-lane-grid">
+            <section class="simple-lane">
+              <div class="simple-lane-head">
+                <span class="simple-lane-icon" aria-hidden="true">
+                  <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+                    <path d="M8.5 12.5h31v18H22L12 36v-5.5H8.5z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M16 20h13M16 25h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h2>Knowledge &amp; Service</h2>
+                  <p>Better answers, clearer context, and stronger service decisions.</p>
+                </div>
+              </div>
+              <ul class="simple-lane-points">
+                <li>Source-backed answers</li>
+                <li>Plain-language search</li>
+                <li>Connected investigation context</li>
+                <li>Faster employee support</li>
+              </ul>
+              <div class="simple-pilot-list">
+                <button class="simple-pilot-button" type="button" data-simple-video-index="1" aria-label="Play Sagicor K.N.O.W.S. video">
+                  <span class="simple-pilot-number">1</span>
+                  <span class="simple-pilot-copy">
+                    <strong>Sagicor K.N.O.W.S.</strong>
+                    <span>AI knowledge assistant for agents and employees.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+                <button class="simple-pilot-button" type="button" data-simple-video-index="0" aria-label="Play Relationship Network video">
+                  <span class="simple-pilot-number">2</span>
+                  <span class="simple-pilot-copy">
+                    <strong>Relationship Network</strong>
+                    <span>Unifies people, policies, accounts, and identifiers into one view.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+              </div>
+            </section>
+
+            <section class="simple-lane green">
+              <div class="simple-lane-head">
+                <span class="simple-lane-icon" aria-hidden="true">
+                  <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="10" width="10" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+                    <rect x="32" y="10" width="10" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+                    <rect x="19" y="28" width="10" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+                    <path d="M16 15h16M37 20v4l-8 5M11 20v4l8 5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h2>Process Automation</h2>
+                  <p>Cleaner intake, faster handling, and less manual rework.</p>
+                </div>
+              </div>
+              <ul class="simple-lane-points">
+                <li>Higher throughput</li>
+                <li>Better case preparation</li>
+                <li>Faster deposit handling</li>
+                <li>Human review remains</li>
+              </ul>
+              <div class="simple-pilot-list">
+                <button class="simple-pilot-button green" type="button" data-simple-video-index="5" aria-label="Play Client Web Disbursement video">
+                  <span class="simple-pilot-number">3</span>
+                  <span class="simple-pilot-copy">
+                    <strong>Client Web Disbursement</strong>
+                    <span>OCR and RPA move eligible requests faster.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+                <button class="simple-pilot-button green" type="button" data-simple-video-index="2" aria-label="Play Group Health Deposit ID video">
+                  <span class="simple-pilot-number">4</span>
+                  <span class="simple-pilot-copy">
+                    <strong>Group Health Deposit ID</strong>
+                    <span>AI recommends likely COOP matches for unprocessed deposits.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+                <button class="simple-pilot-button green" type="button" data-simple-video-index="6" aria-label="Play Pre-Authorization Automation video">
+                  <span class="simple-pilot-number">5</span>
+                  <span class="simple-pilot-copy">
+                    <strong>Pre-Authorization Automation</strong>
+                    <span>AI extracts and prepares cases for faster review.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+              </div>
+            </section>
+
+            <section class="simple-lane">
+              <div class="simple-lane-head">
+                <span class="simple-lane-icon" aria-hidden="true">
+                  <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+                    <path d="m24 6 16 8-16 8-16-8z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="m11 22 13 7 13-7M11 30l13 7 13-7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h2>Platform Acceleration</h2>
+                  <p>Reusable digital patterns that lower delivery effort and cost.</p>
+                </div>
+              </div>
+              <ul class="simple-lane-points">
+                <li>Guided application journeys</li>
+                <li>Cleaner submissions</li>
+                <li>Lower rollout effort</li>
+                <li>Reusable foundation for scale</li>
+              </ul>
+              <div class="simple-pilot-list">
+                <button class="simple-pilot-button" type="button" data-simple-video-index="3" aria-label="Play ivari eApps Platform video">
+                  <span class="simple-pilot-number">6</span>
+                  <span class="simple-pilot-copy">
+                    <strong>ivari eApps Platform</strong>
+                    <span>AI-assisted build of guided digital application journeys.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+                <button class="simple-pilot-button" type="button" data-simple-video-index="4" aria-label="Play ivari Intelligent eForms video">
+                  <span class="simple-pilot-number">7</span>
+                  <span class="simple-pilot-copy">
+                    <strong>ivari Intelligent eForms</strong>
+                    <span>Static forms become guided digital experiences.</span>
+                  </span>
+                  <span class="simple-pilot-video" aria-hidden="true">
+                    <img class="video-button-art" src="assets/video-icon-833-thumb.png" alt="">
+                  </span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+
         <div class="track-grid">
           <section class="track" aria-labelledby="assist-title">
             <h2 class="track-title" id="assist-title">
@@ -4987,17 +5533,20 @@
     const dashboardDesktopQuery = window.matchMedia("(min-width: 901px)");
 
     let currentIndex = 0;
+    let currentVideoPosition = 0;
     let currentPlacematIndex = 0;
     let lastFocusedCard = null;
     let dashboardMode = "main";
-    const dashboardModes = new Set(["main", "video", "images"]);
+    const dashboardModes = new Set(["main", "video", "images", "simple"]);
     const placematNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
+    const videoNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
     const hostedVideoBase = "/videos/";
 
     function dashboardModeFromPath() {
       const fileName = window.location.pathname.split("/").pop() || "index.html";
       if (fileName === "dashboard-video.html") return "video";
       if (fileName === "dashboard-images.html") return "images";
+      if (fileName === "dashboard-simple.html") return "simple";
       return "main";
     }
 
@@ -5724,12 +6273,14 @@
 
     function openVideo(index, sourceCard) {
       currentIndex = index;
+      const orderedPosition = videoNavigationOrder.indexOf(index);
+      currentVideoPosition = orderedPosition >= 0 ? orderedPosition : Math.max(0, Math.min(index, videos.length - 1));
       lastFocusedCard = sourceCard || document.activeElement;
       const item = videos[currentIndex];
       playerError.classList.remove("is-visible");
       playerErrorText.textContent = "";
       playerTitle.textContent = item.title;
-      playerNumber.textContent = `Video ${String(currentIndex + 1).padStart(2, "0")} of ${videos.length}`;
+      playerNumber.textContent = `Video ${String(currentVideoPosition + 1).padStart(2, "0")} of ${videoNavigationOrder.length}`;
       activeVideo.setAttribute("src", videoPath(item.file));
       activeVideo.load();
       player.classList.add("is-open");
@@ -5775,8 +6326,8 @@
     }
 
     function showOffset(offset) {
-      const nextIndex = (currentIndex + offset + videos.length) % videos.length;
-      openVideo(nextIndex, lastFocusedCard);
+      const nextPosition = (currentVideoPosition + offset + videoNavigationOrder.length) % videoNavigationOrder.length;
+      openVideo(videoNavigationOrder[nextPosition], lastFocusedCard);
     }
 
     document.querySelectorAll(".pilot-video-button").forEach((button) => {
@@ -5810,6 +6361,27 @@
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           openCard();
+        }
+      });
+    });
+
+    document.querySelectorAll(".simple-pilot-button[data-simple-video-index]").forEach((button) => {
+      const openSimpleVideo = (event) => {
+        if (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        const videoIndex = Number(button.dataset.simpleVideoIndex);
+        if (Number.isInteger(videoIndex) && videos[videoIndex]) {
+          openVideo(videoIndex, button);
+        }
+      };
+
+      button.addEventListener("click", openSimpleVideo);
+      button.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openSimpleVideo();
         }
       });
     });
