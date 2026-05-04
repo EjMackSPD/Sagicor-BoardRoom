@@ -5492,8 +5492,18 @@
       placematContent.innerHTML = page.type === "relationship" ? renderRelationshipPlacemat(page) : renderStandardHtmlPlacemat(page);
     }
 
+    function renderImagePlacemat(index) {
+      const item = placemats[index];
+      placematContent.className = "placemat-page image-mode";
+      placematContent.innerHTML = `
+        <div class="placemat-image-stage">
+          <img class="placemat-image" src="${item.image}" alt="${item.title} placemat">
+        </div>
+      `;
+    }
+
     function renderPlacemat(index) {
-      renderHtmlPlacemat(index);
+      renderImagePlacemat(index);
     }
 
     function renderGeneratedPlacemat(index) {
