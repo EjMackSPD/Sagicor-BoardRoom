@@ -151,6 +151,38 @@
       font-weight: 600;
     }
 
+    .dashboard-mode-nav {
+      width: fit-content;
+      display: inline-flex;
+      gap: 4px;
+      margin-top: 10px;
+      padding: 4px;
+      border: 1px solid #cfe0f4;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 18px rgba(0, 73, 108, 0.08);
+    }
+
+    .dashboard-mode-link {
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      border-radius: 5px;
+      color: #00496C;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dashboard-mode-link[aria-current="page"] {
+      color: #ffffff;
+      background: #00B3EF;
+    }
+
     .portfolio-logo-lockup {
       display: grid;
       justify-items: center;
@@ -301,6 +333,7 @@
       --pilot-ribbon-right: -4px;
       --pilot-arrow-mark-size: 12px;
       --pilot-arrow-stroke: 4px;
+      --pilot-ribbon-video-icon-size: 24px;
       --pilot-copy-right: 64px;
       position: relative;
       width: 100%;
@@ -408,6 +441,25 @@
     .pilot-card:focus-visible::after {
       opacity: 0.95;
       transform: translate(4px, -50%) rotate(45deg);
+    }
+
+    body[data-dashboard-mode="video"] .pilot-card::after {
+      right: calc(var(--pilot-ribbon-right) + (var(--pilot-ribbon-width) - var(--pilot-ribbon-video-icon-size)) / 2 + 1px);
+      width: var(--pilot-ribbon-video-icon-size);
+      height: var(--pilot-ribbon-video-icon-size);
+      border: 0;
+      background: url("assets/video-icon-833-thumb.png") center / contain no-repeat;
+      transform: translateY(-50%);
+    }
+
+    body[data-dashboard-mode="video"] .pilot-card:hover::after,
+    body[data-dashboard-mode="video"] .pilot-card:focus-within::after,
+    body[data-dashboard-mode="video"] .pilot-card:focus-visible::after {
+      transform: translate(4px, -50%);
+    }
+
+    body[data-dashboard-mode="video"] .pilot-card .pilot-video-button {
+      display: none;
     }
 
     .pilot-number {
@@ -3691,6 +3743,7 @@
         --pilot-ribbon-right: -4px;
         --pilot-arrow-mark-size: 10px;
         --pilot-arrow-stroke: 4px;
+        --pilot-ribbon-video-icon-size: 22px;
         --pilot-copy-right: 56px;
         min-height: 92px;
         gap: 7px;
@@ -3888,6 +3941,7 @@
         --pilot-ribbon-right: -3px;
         --pilot-arrow-mark-size: 9px;
         --pilot-arrow-stroke: 3px;
+        --pilot-ribbon-video-icon-size: 20px;
         --pilot-copy-right: 44px;
         gap: 6px;
       }
@@ -3975,7 +4029,7 @@
     }
   </style>
 </head>
-<body>
+<body data-dashboard-mode="main">
   <div class="app">
     <header class="portfolio-landing">
       <div class="dashboard-frame">
@@ -3985,6 +4039,11 @@
             <h1 class="portfolio-title" id="portfolio-title"><span class="brand-blue">Sagicor</span> AI Pilot Portfolio</h1>
             <p class="portfolio-subtitle">Practical progress. Clear next gates. Reusable patterns for scale.</p>
             <p class="portfolio-intro">Seven pilots are improving knowledge access, process efficiency, and decision support across Sagicor and ivari with human oversight, controls, and a staged path to scale.</p>
+            <nav class="dashboard-mode-nav" aria-label="Dashboard views">
+              <a class="dashboard-mode-link" href="?dashboard=main" data-dashboard-mode-link="main">Dashboard Main</a>
+              <a class="dashboard-mode-link" href="?dashboard=video" data-dashboard-mode-link="video">Dashboard Video</a>
+              <a class="dashboard-mode-link" href="?dashboard=images" data-dashboard-mode-link="images">Dashboard Images</a>
+            </nav>
           </div>
           <div class="portfolio-logo-lockup">
             <img class="brand-logo" src="sagicor-logo-stacked.png" alt="Sagicor">
@@ -4056,7 +4115,7 @@
               Assist / Knowledge
             </h2>
             <div class="track-cards">
-              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="1" aria-label="Open Sagicor KNOWS placemat">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="1" data-video-index="1" aria-label="Open Sagicor KNOWS placemat">
                 <span class="pilot-number">1</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4082,7 +4141,7 @@
                 <span class="pilot-footnote">Tested to Copilot-native rebuild for governed scale</span>
               </article>
 
-              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="0" aria-label="Open Relationship Network placemat">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="0" data-video-index="0" aria-label="Open Relationship Network placemat">
                 <span class="pilot-number">2</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4125,7 +4184,7 @@
               Process Automation
             </h2>
             <div class="track-cards">
-              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="5" aria-label="Open Client Web Disbursement Automation placemat">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="5" data-video-index="5" aria-label="Open Client Web Disbursement Automation placemat">
                 <span class="pilot-number">3</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4151,7 +4210,7 @@
                 <span class="pilot-footnote">First iteration live, reducing exceptions and expanding throughput</span>
               </article>
 
-              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="2" aria-label="Open Group Health Deposit Identification placemat">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="2" data-video-index="2" aria-label="Open Group Health Deposit Identification placemat">
                 <span class="pilot-number">4</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4178,7 +4237,7 @@
                 <span class="pilot-footnote">PoC and prototype to validate with processors</span>
               </article>
 
-              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="6" aria-label="Open Pre-Authorization Automation placemat">
+              <article class="pilot-card green" role="link" tabindex="0" data-placemat-index="6" data-video-index="6" aria-label="Open Pre-Authorization Automation placemat">
                 <span class="pilot-number">5</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4217,7 +4276,7 @@
               Platform Acceleration
             </h2>
             <div class="track-cards">
-              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="3" aria-label="Open ivari eApps Platform placemat">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="3" data-video-index="3" aria-label="Open ivari eApps Platform placemat">
                 <span class="pilot-number">6</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4244,7 +4303,7 @@
                 <span class="pilot-footnote">Azure PoC built, scale through term-product launch path</span>
               </article>
 
-              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="4" aria-label="Open ivari Intelligent eForms Platform placemat">
+              <article class="pilot-card" role="link" tabindex="0" data-placemat-index="4" data-video-index="4" aria-label="Open ivari Intelligent eForms Platform placemat">
                 <span class="pilot-number">7</span>
                 <span class="pilot-main">
                   <span class="pilot-actions">
@@ -4947,13 +5006,61 @@
     const playerError = document.getElementById("playerError");
     const playerErrorText = document.getElementById("playerErrorText");
     const dashboardFrame = document.querySelector(".dashboard-frame");
+    const dashboardModeLinks = document.querySelectorAll(".dashboard-mode-link");
     const dashboardDesktopQuery = window.matchMedia("(min-width: 901px)");
 
     let currentIndex = 0;
     let currentPlacematIndex = 0;
     let lastFocusedCard = null;
+    let dashboardMode = "main";
+    const dashboardModes = new Set(["main", "video", "images"]);
     const placematNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
     const hostedVideoBase = "/videos/";
+
+    function dashboardModeFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get("dashboard") || "main";
+      return dashboardModes.has(mode) ? mode : "main";
+    }
+
+    function dashboardUrl(mode) {
+      const params = new URLSearchParams(window.location.search);
+      if (mode === "main") {
+        params.delete("dashboard");
+      } else {
+        params.set("dashboard", mode);
+      }
+      const query = params.toString();
+      return `${window.location.pathname}${query ? `?${query}` : ""}`;
+    }
+
+    function updateDashboardModeLabels() {
+      document.querySelectorAll(".pilot-card[data-placemat-index]").forEach((card) => {
+        const index = Number(card.dataset.placematIndex);
+        const item = placemats[index];
+        if (!item) return;
+        const label = dashboardMode === "video" ? `Play ${item.title} video` : `Open ${item.title} placemat`;
+        card.setAttribute("aria-label", label);
+      });
+    }
+
+    function setDashboardMode(mode, updateUrl = false) {
+      dashboardMode = dashboardModes.has(mode) ? mode : "main";
+      document.body.dataset.dashboardMode = dashboardMode;
+      if (updateUrl) {
+        history.pushState(null, "", dashboardUrl(dashboardMode));
+      }
+      dashboardModeLinks.forEach((link) => {
+        const isCurrent = link.dataset.dashboardModeLink === dashboardMode;
+        if (isCurrent) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+        link.setAttribute("href", dashboardUrl(link.dataset.dashboardModeLink || "main"));
+      });
+      updateDashboardModeLabels();
+    }
 
     function updateDashboardFrame() {
       if (!dashboardFrame) return;
@@ -5002,6 +5109,7 @@
       root.style.setProperty("--dashboard-frame-height", `${baseHeight * scale}px`);
     }
 
+    setDashboardMode(dashboardModeFromUrl());
     updateDashboardFrame();
     window.addEventListener("resize", updateDashboardFrame);
     dashboardDesktopQuery.addEventListener("change", updateDashboardFrame);
@@ -5492,7 +5600,21 @@
       placematContent.innerHTML = page.type === "relationship" ? renderRelationshipPlacemat(page) : renderStandardHtmlPlacemat(page);
     }
 
+    function renderImagePlacemat(index) {
+      const item = placemats[index];
+      placematContent.className = "placemat-page image-mode";
+      placematContent.innerHTML = `
+        <div class="placemat-image-stage">
+          <img class="placemat-image" src="${item.image}" alt="${item.title} placemat">
+        </div>
+      `;
+    }
+
     function renderPlacemat(index) {
+      if (dashboardMode === "images") {
+        renderImagePlacemat(index);
+        return;
+      }
       renderHtmlPlacemat(index);
     }
 
@@ -5598,7 +5720,7 @@
       placematView.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       if (updateHash && placemats[index]) {
-        history.pushState(null, "", `#placemat-${placemats[index].slug}`);
+        history.pushState(null, "", `${window.location.pathname}${window.location.search}#placemat-${placemats[index].slug}`);
       }
       placematBackButton.focus({ preventScroll: true });
     }
@@ -5690,20 +5812,34 @@
     });
 
     document.querySelectorAll(".pilot-card[data-placemat-index]").forEach((card) => {
-      const openCardPlacemat = () => {
-        const index = Number(card.dataset.placematIndex);
-        if (Number.isInteger(index) && placemats[index]) {
-          openPlacemat(index);
+      const openCard = () => {
+        if (dashboardMode === "video") {
+          const videoIndex = Number(card.dataset.videoIndex);
+          if (Number.isInteger(videoIndex) && videos[videoIndex]) {
+            openVideo(videoIndex, card);
+          }
+          return;
+        }
+        const placematIndex = Number(card.dataset.placematIndex);
+        if (Number.isInteger(placematIndex) && placemats[placematIndex]) {
+          openPlacemat(placematIndex);
         }
       };
 
-      card.addEventListener("click", openCardPlacemat);
+      card.addEventListener("click", openCard);
       card.addEventListener("keydown", (event) => {
         if (event.target.closest(".pilot-video-button")) return;
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openCardPlacemat();
+          openCard();
         }
+      });
+    });
+
+    dashboardModeLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        setDashboardMode(link.dataset.dashboardModeLink || "main", true);
       });
     });
 
@@ -5745,11 +5881,19 @@
     });
 
     window.addEventListener("hashchange", () => {
+      setDashboardMode(dashboardModeFromUrl());
       const placematIndex = placematIndexFromHash();
       if (placematIndex >= 0) {
         openPlacemat(placematIndex, false);
       } else if (placematView.classList.contains("is-open")) {
         closePlacemat(false);
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      setDashboardMode(dashboardModeFromUrl());
+      if (placematView.classList.contains("is-open")) {
+        renderPlacemat(currentPlacematIndex);
       }
     });
 
