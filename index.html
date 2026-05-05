@@ -773,67 +773,50 @@
     }
 
     body[data-dashboard-mode="simple"] .portfolio-board {
-      grid-template-rows: auto auto 1fr auto;
-      gap: 14px;
-      padding: 22px 28px 18px;
+      grid-template-rows: auto 1fr;
+      gap: 34px;
+      padding: 22px 28px 34px;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-hero {
+      display: grid;
+    }
+
+    body[data-dashboard-mode="simple"] .portfolio-title {
+      font-size: 46px;
     }
 
     body[data-dashboard-mode="simple"] .portfolio-subtitle {
-      max-width: 1080px;
-      margin-top: 10px;
-      font-size: 30px;
+      max-width: 1120px;
+      margin-top: 8px;
+      font-size: 28px;
       line-height: 1.08;
     }
 
-    body[data-dashboard-mode="simple"] .portfolio-intro {
-      max-width: 980px;
-      margin-top: 10px;
-      font-size: 19px;
-      line-height: 1.28;
-      font-weight: 700;
+    body[data-dashboard-mode="simple"] .portfolio-intro,
+    body[data-dashboard-mode="simple"] .portfolio-logo-lockup {
+      display: none;
     }
 
     body[data-dashboard-mode="simple"] .value-row,
     body[data-dashboard-mode="simple"] .track-grid,
-    body[data-dashboard-mode="simple"] .summary-band {
+    body[data-dashboard-mode="simple"] .summary-band,
+    body[data-dashboard-mode="simple"] .portfolio-footer,
+    body[data-dashboard-mode="simple"] .simple-summary-row,
+    body[data-dashboard-mode="simple"] .simple-lane-points {
       display: none;
-    }
-
-    body[data-dashboard-mode="simple"] .portfolio-footer {
-      min-height: 62px;
-      justify-content: stretch;
-      gap: 0;
-      padding: 10px 28px;
-      border-radius: 14px;
-      font-size: 22px;
-      line-height: 1.08;
-    }
-
-    body[data-dashboard-mode="simple"] .portfolio-footer span {
-      flex: 1 1 0;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-      padding: 0 18px;
-      text-align: center;
-    }
-
-    body[data-dashboard-mode="simple"] .portfolio-footer span:not(:last-child)::after {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      margin-left: 0;
-      transform: translate(50%, -50%);
-      font-size: 22px;
     }
 
     body[data-dashboard-mode="simple"] .simple-interface {
       display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 18px;
+      grid-template-rows: 1fr;
+      gap: 0;
       min-height: 0;
+    }
+
+    body[data-dashboard-mode="simple"] .simple-lane {
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 22px;
     }
 
     .simple-summary-row {
@@ -914,25 +897,25 @@
     .simple-lane-grid {
       display: grid;
       grid-template-columns: 0.96fr 1.08fr 0.96fr;
-      gap: 16px;
+      gap: 18px;
       min-height: 0;
+      align-items: stretch;
     }
 
     .simple-lane {
       min-height: 0;
       display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 16px;
-      padding: 18px 18px 20px;
-      border: 2px solid #cfe0f4;
-      border-radius: 20px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
-      box-shadow: 0 16px 34px rgba(0, 73, 108, 0.06);
+      grid-template-rows: 1fr;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .simple-lane.green {
-      border-color: rgba(130, 195, 65, 0.45);
-      background: linear-gradient(180deg, #ffffff 0%, #f6fbf0 100%);
+      border-color: transparent;
+      background: transparent;
     }
 
     .simple-lane-head {
@@ -1011,19 +994,30 @@
     }
 
     .simple-pilot-list {
+      height: 100%;
       display: grid;
-      gap: 12px;
-      align-content: start;
+      gap: 18px;
+      align-content: stretch;
+    }
+
+    .simple-lane:nth-child(1) .simple-pilot-list,
+    .simple-lane:nth-child(3) .simple-pilot-list {
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .simple-lane:nth-child(2) .simple-pilot-list {
+      grid-template-rows: repeat(3, minmax(0, 1fr));
     }
 
     .simple-pilot-button {
       width: 100%;
-      min-height: 122px;
+      min-height: 0;
       display: grid;
-      grid-template-columns: 64px minmax(0, 1fr) 56px;
-      gap: 18px;
+      grid-template-columns: minmax(0, 1fr) 66px;
+      gap: 24px;
       align-items: center;
-      padding: 18px 20px;
+      position: relative;
+      padding: 58px 26px 26px 96px;
       border: 2px solid #9eddfa;
       border-radius: 16px;
       color: inherit;
@@ -1053,15 +1047,18 @@
     }
 
     .simple-pilot-number {
-      width: 64px;
-      height: 64px;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 70px;
+      height: 70px;
       display: grid;
       place-items: center;
       border: 3px solid #00B3EF;
-      border-radius: 20px;
+      border-radius: 18px;
       color: #00B3EF;
       background: linear-gradient(180deg, #ffffff 0%, #eef9ff 100%);
-      font-size: 30px;
+      font-size: 32px;
       line-height: 1;
       font-weight: 900;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 14px rgba(0, 73, 108, 0.08);
@@ -1075,8 +1072,8 @@
     }
 
     .simple-pilot-video {
-      width: 56px;
-      height: 56px;
+      width: 66px;
+      height: 66px;
       display: grid;
       place-items: center;
       justify-self: end;
@@ -1108,14 +1105,14 @@
     }
 
     .simple-pilot-video .video-button-art {
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
     }
 
     .simple-pilot-copy strong {
       display: block;
       color: #00496C;
-      font-size: 24px;
+      font-size: 30px;
       line-height: 1.05;
       font-weight: 900;
     }
@@ -1124,7 +1121,7 @@
       display: block;
       margin-top: 8px;
       color: #00496C;
-      font-size: 17px;
+      font-size: 21px;
       line-height: 1.18;
       font-weight: 800;
     }
@@ -4964,13 +4961,13 @@
 
   <script>
     const videos = [
-      { file: "1 - Sagicor RND and Fraud - FINAL.mp4", title: "RND and Fraud" },
-      { file: "2 - Sagicor KNOWS - FINAL.mp4", title: "Sagicor KNOWS" },
-      { file: "3 - Sagicor MIMO - FINAL.mp4", title: "MIMO" },
-      { file: "4 - Sagicor ivari eApp - FINAL.mp4", title: "eApp" },
-      { file: "5 - Sagicor Ivari eForms - FINAL.mp4", title: "eForms" },
-      { file: "6 - Sagicor Client Web Disbursement Automation - FINAL.mp4", title: "Client Web Disbursement" },
-      { file: "7 - Sagicor Pre-authorization - FINAL.mp4", title: "Pre-Authorization" }
+      { file: "1 - Sagicor RND and Fraud - FINAL.mp4", title: "Relationship Network" },
+      { file: "2 - Sagicor KNOWS - FINAL.mp4", title: "Sagicor K.N.O.W.S." },
+      { file: "3 - Sagicor MIMO - FINAL.mp4", title: "Group Health Deposit Identification" },
+      { file: "4 - Sagicor ivari eApp - FINAL.mp4", title: "ivari eApps Platform" },
+      { file: "5 - Sagicor Ivari eForms - FINAL.mp4", title: "ivari Intelligent eForms Platform" },
+      { file: "6 - Sagicor Client Web Disbursement Automation - FINAL.mp4", title: "Client Web Disbursement Automation" },
+      { file: "7 - Sagicor Pre-authorization - FINAL.mp4", title: "Pre-Authorization Automation" }
     ];
 
     const placemats = [
@@ -5541,9 +5538,14 @@
     const placematNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
     const videoNavigationOrder = [1, 0, 5, 2, 6, 3, 4];
     const hostedVideoBase = "/videos/";
+    const videoAssetVersion = "2026-05-04-real-mp4";
 
     function dashboardModeFromPath() {
       const fileName = window.location.pathname.split("/").pop() || "index.html";
+      if (fileName === "main.html") return "main";
+      if (fileName === "video.html") return "video";
+      if (fileName === "images.html") return "images";
+      if (fileName === "simple.html") return "simple";
       if (fileName === "dashboard-video.html") return "video";
       if (fileName === "dashboard-images.html") return "images";
       if (fileName === "dashboard-simple.html") return "simple";
@@ -5558,13 +5560,17 @@
 
     function dashboardUrl(mode) {
       const params = new URLSearchParams(window.location.search);
-      if (mode === "main") {
-        params.delete("dashboard");
-      } else {
-        params.set("dashboard", mode);
-      }
+      const pageByMode = {
+        main: "main.html",
+        video: "video.html",
+        images: "images.html",
+        simple: "simple.html"
+      };
+      params.delete("dashboard");
+      const pathParts = window.location.pathname.split("/");
+      pathParts[pathParts.length - 1] = pageByMode[mode] || pageByMode.main;
       const query = params.toString();
-      return `${window.location.pathname}${query ? `?${query}` : ""}`;
+      return `${pathParts.join("/")}${query ? `?${query}` : ""}${window.location.hash}`;
     }
 
     function updateDashboardModeLabels() {
@@ -5644,10 +5650,13 @@
     function videoPath(file) {
       const localHosts = ["localhost", "127.0.0.1", "::1"];
       const isHostedSite = /^https?:$/.test(window.location.protocol) && !localHosts.includes(window.location.hostname);
+      const versionParam = `v=${encodeURIComponent(videoAssetVersion)}`;
       if (isHostedSite) {
-        return hostedVideoBase + encodeURIComponent(file);
+        return `${hostedVideoBase}${encodeURIComponent(file)}?${versionParam}`;
       }
-      return new URL(file, window.location.href).href;
+      const url = new URL(file, window.location.href);
+      url.searchParams.set("v", videoAssetVersion);
+      return url.href;
     }
 
     function renderList(items, className = "placemat-list") {
